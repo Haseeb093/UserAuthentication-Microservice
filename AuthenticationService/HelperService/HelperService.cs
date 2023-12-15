@@ -24,7 +24,7 @@ namespace Service.Validation
             _userManager = userManager;
             _configuration = configuration;
         }
-        //sadasdas
+       
         protected async Task<bool> LoginValidation(LoginParam loginParam, ResponseObject<LoginResponse> responseObject)
         {
             if (loginParam != null && loginParam.Username.Trim() != "" && !string.IsNullOrEmpty(loginParam.Username))
