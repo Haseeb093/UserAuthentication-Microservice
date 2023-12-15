@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qgqspFTE29QQX9j4qyeJEGr8HtbwK47orTOH8LDRq2sTRbbO7Uc9p3ycnKSn1P1nW5PVp7tFgRK7h1UG9heRtA==",
+  "dgSpecHash": "CCQxU0LzrqmquGEOuFV/mvYA8ycmDs/wUCye4z4AbNLwPBaUIgKnUcnSi9KV0sPdBrAoIUWC6J898htz78XcDg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hshahid\\Desktop\\Work\\New folder\\UserAuthentication\\UserAuthentication.csproj",
+  "projectFilePath": "C:\\Users\\hshahid\\Desktop\\Work\\UserAuthentication\\UserAuthentication\\UserAuthentication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hshahid\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\hshahid\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

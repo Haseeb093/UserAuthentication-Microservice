@@ -3006,11 +3006,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\New folder\\UserAuthentication\\UserAuthentication.csproj",
+      "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\UserAuthentication\\UserAuthentication\\UserAuthentication.csproj",
       "projectName": "UserAuthentication",
-      "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\New folder\\UserAuthentication\\UserAuthentication.csproj",
+      "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\UserAuthentication\\UserAuthentication\\UserAuthentication.csproj",
       "packagesPath": "C:\\Users\\hshahid\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\New folder\\UserAuthentication\\obj\\",
+      "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\UserAuthentication\\UserAuthentication\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hshahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3027,11 +3027,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\hshahid\\Desktop\\Work\\New folder\\AuthenticationService\\Service.csproj": {
-              "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\New folder\\AuthenticationService\\Service.csproj"
+            "C:\\Users\\hshahid\\Desktop\\Work\\UserAuthentication\\AuthenticationService\\Service.csproj": {
+              "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\UserAuthentication\\AuthenticationService\\Service.csproj"
             },
-            "C:\\Users\\hshahid\\Desktop\\Work\\New folder\\Domain\\Domain.csproj": {
-              "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\New folder\\Domain\\Domain.csproj"
+            "C:\\Users\\hshahid\\Desktop\\Work\\UserAuthentication\\Domain\\Domain.csproj": {
+              "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\UserAuthentication\\Domain\\Domain.csproj"
             }
           }
         }
