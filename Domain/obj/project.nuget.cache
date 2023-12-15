@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p0jsM1KjtAogOdNf7kR+BjDk5rl7KebvYS6Anfsg6lAoPbEZ7ujIXPFNzzu9LViSOXpNWmZK/q+EeM62EvxQbg==",
+  "dgSpecHash": "6PpRdEeaBwckOrh5uBTHTqcuANtK1yec9EKppIIi0xSU5AQjyT4vy14RMTN0Cg4dsWkmWezuv0daPbKLWOcneQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hshahid\\Desktop\\Work\\New folder\\Domain\\Domain.csproj",
+  "projectFilePath": "C:\\Users\\hshahid\\Desktop\\Work\\UserAuthentication\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hshahid\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.0\\microsoft.aspnetcore.authentication.jwtbearer.8.0.0.nupkg.sha512",
     "C:\\Users\\hshahid\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.0.3\\microsoft.identitymodel.abstractions.7.0.3.nupkg.sha512",
