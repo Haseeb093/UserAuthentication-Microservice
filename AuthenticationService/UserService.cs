@@ -87,7 +87,6 @@ namespace AuthenticationService
             {
                 Helper.SetFailuerRespose(response);
             }
-
             return response;
         }
     }

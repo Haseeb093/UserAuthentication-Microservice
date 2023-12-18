@@ -13,7 +13,7 @@ namespace Domain.Helper
         public static void SetSuccessRespose<T>(ResponseObject<T> response)
         {
             response.Success = true;
-            response.Message = response.Message == "" ? ResposneCode.Failuer.ToString() : response.Message;
+            response.Message = response.Message == "" ? ResposneCode.Success.ToString() : response.Message;
         }
 
         public static void SetFailuerRespose<T>(ResponseObject<T> response, Exception exception = null)
