@@ -26,15 +26,7 @@ namespace UserAuthentication.Controllers
             try
             {
                 LoginParam loginUser = JsonConvert.DeserializeObject<LoginParam>(requestObject["data"].ToString());
-
-                if (loginUser != null)
-                {
-                    responseObj = await userService.Login(loginUser);
-                }
-                else
-                {
-                    Helper.SetFailuerRespose(responseObj);
-                }
+                responseObj = await userService.Login(loginUser);
             }
             catch (Exception ex)
             {
@@ -51,16 +43,7 @@ namespace UserAuthentication.Controllers
             try
             {
                 RegisterParam registerParam = JsonConvert.DeserializeObject<RegisterParam>(requestObject["data"].ToString());
-
-                if (registerParam != null)
-                {
-                    responseObj = await userService.Register(registerParam);
-                }
-                else
-                {
-                    responseObj.Data = null;
-                    Helper.SetFailuerRespose(responseObj);
-                }
+                responseObj = await userService.Register(registerParam);
             }
             catch (Exception ex)
             {

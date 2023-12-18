@@ -24,19 +24,19 @@ namespace Service.Validation
             _userManager = userManager;
             _configuration = configuration;
         }
-        //sadasdas
+
         protected async Task<bool> LoginValidation(LoginParam loginParam, ResponseObject<LoginResponse> responseObject)
         {
-            if (loginParam != null && loginParam.Username.Trim() != "" && !string.IsNullOrEmpty(loginParam.Username))
+            if (loginParam != null && !string.IsNullOrEmpty(loginParam.Username) && loginParam.Username.Trim() != "")
             {
                 user = await GetUserByName(loginParam.Username);
 
-                if (user != null && loginParam.Password.Trim() != "" && !string.IsNullOrEmpty(loginParam.Password) && await _userManager.CheckPasswordAsync(user, loginParam.Password))
+                if (user != null && !string.IsNullOrEmpty(loginParam.Password) && loginParam.Password.Trim() != "" && await _userManager.CheckPasswordAsync(user, loginParam.Password))
                 {
                     return true;
                 }
             }
-            responseObject.Message = "User Validation Failed !";
+            responseObject.Message = "User Name or Password not Matched !";
             return false;
         }
 
@@ -45,9 +45,9 @@ namespace Service.Validation
             bool isValid = true;
             response.Data = new List<Error>();
 
-            if (registerParam != null && registerParam.Username.Trim() != "" && !string.IsNullOrEmpty(registerParam.Username)
-                                            && registerParam.Email.Trim() != "" && !string.IsNullOrEmpty(registerParam.Email) &&
-                                                    registerParam.Password.Trim() != "" && !string.IsNullOrEmpty(registerParam.Password))
+            if (registerParam != null && !string.IsNullOrEmpty(registerParam.Username) && !string.IsNullOrEmpty(registerParam.Email)
+                                               && !string.IsNullOrEmpty(registerParam.Password) && registerParam.Username.Trim() != "" &&
+                                               registerParam.Email.Trim() != "" && registerParam.Password.Trim() != "")
             {
                 var regUser = await GetUserByName(registerParam.Username);
 
@@ -90,6 +90,10 @@ namespace Service.Validation
                     error.Message = err.Description;
                     responseObject.Data.Add(error);
                 }
+            }
+            else
+            {
+                responseObject.Message = "User Registered Successfully";
             }
             return identityResult.Succeeded;
         }
