@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "swLkogDTaW/Vd2JCTbz5TCVKv4WNNVSoWsoeGRoR2OqhzhPrEfaSkljfaBjhYzuY0tCO/M2Fto+dp76rBBHBow==",
+  "dgSpecHash": "bp/1Q3jT12Yzr5uK7PSkCo6EQGkfezoqoXa8GAG2FrUXEm0BSrohklTh2KuC1IalInQqlanZmB4cUTwG1XOnSA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hshahid\\Desktop\\Work\\UserAuthentication\\AuthenticationService\\Service.csproj",
+  "projectFilePath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication-Microservice\\AuthenticationService\\Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hshahid\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\hshahid\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

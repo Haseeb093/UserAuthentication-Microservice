@@ -118,9 +118,9 @@ namespace Service.Validation
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"])), SecurityAlgorithms.HmacSha256)
                 );
-            tokenResponse.UserName = authClaims?.FirstOrDefault(s => s.Type.Contains(ClaimTypes.Name))?.Value;
-            tokenResponse.Token = new JwtSecurityTokenHandler().WriteToken(token);
             tokenResponse.ValidTo = token.ValidTo;
+            tokenResponse.Token = new JwtSecurityTokenHandler().WriteToken(token);
+            tokenResponse.UserName = authClaims?.FirstOrDefault(s => s.Type.Contains(ClaimTypes.Name))?.Value;
             return tokenResponse;
         }
     }

@@ -14,6 +14,6 @@ namespace Domain.Models
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
 
-        public Boolean IsAdmin { get; set; } = false;
+        public string Role { get; set; }
     }
 }
