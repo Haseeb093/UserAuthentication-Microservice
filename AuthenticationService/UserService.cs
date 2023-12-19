@@ -67,14 +67,30 @@ namespace AuthenticationService
                     if (!await _roleManager.RoleExistsAsync(UserRoles.Admin.ToString()))
                         await _roleManager.CreateAsync(new IdentityRole(UserRoles.Admin.ToString()));
 
+                    if (!await _roleManager.RoleExistsAsync(UserRoles.Doctor.ToString()))
+                        await _roleManager.CreateAsync(new IdentityRole(UserRoles.Doctor.ToString()));
+
+                    if (!await _roleManager.RoleExistsAsync(UserRoles.Patient.ToString()))
+                        await _roleManager.CreateAsync(new IdentityRole(UserRoles.Patient.ToString()));
+
                     if (!await _roleManager.RoleExistsAsync(UserRoles.User.ToString()))
                         await _roleManager.CreateAsync(new IdentityRole(UserRoles.User.ToString()));
 
-                    if (registerParam.IsAdmin && await _roleManager.RoleExistsAsync(UserRoles.Admin.ToString()))
-                        await _userManager.AddToRoleAsync(user, UserRoles.Admin.ToString());
-
-                    if (await _roleManager.RoleExistsAsync(UserRoles.User.ToString()))
-                        await _userManager.AddToRoleAsync(user, UserRoles.User.ToString());
+                    switch (registerParam.Role)
+                    {
+                        case "Admin":
+                            await _userManager.AddToRoleAsync(user, UserRoles.Admin.ToString());
+                            break;
+                        case "Doctor":
+                            await _userManager.AddToRoleAsync(user, UserRoles.Doctor.ToString());
+                            break;
+                        case "Patient":
+                            await _userManager.AddToRoleAsync(user, UserRoles.Patient.ToString());
+                            break;
+                        default:
+                            await _userManager.AddToRoleAsync(user, UserRoles.User.ToString());
+                            break;
+                    }
 
                     Helper.SetSuccessRespose(response);
                 }

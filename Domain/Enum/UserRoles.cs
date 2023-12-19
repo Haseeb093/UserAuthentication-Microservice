@@ -8,7 +8,11 @@ namespace Domain.Enum
     {
         [DefaultValue("Admin")]
         Admin,
+        [DefaultValue("Doctor")]
+        Doctor,
+        [DefaultValue("Patient")]
+        Patient,
         [DefaultValue("User")]
-        User,
+        User
     }
 }
