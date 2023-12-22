@@ -3,8 +3,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Ocelot.DependencyInjection;
-using Ocelot.Middleware;
 using System.Text;
 using UserAuthentication.Auth;
 
@@ -45,8 +43,6 @@ builder.Services.AddAuthentication(options =>
      };
  });
 
-builder.Configuration.AddJsonFile("APIGateWay/ocelot.json");
-builder.Services.AddOcelot(builder.Configuration);
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
@@ -61,8 +57,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-await app.UseOcelot();
-app.UseHttpsRedirection();
+
 // Authentication & Authorization
 app.UseAuthentication();
 app.UseAuthorization();

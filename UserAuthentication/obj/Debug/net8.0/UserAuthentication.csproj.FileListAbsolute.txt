@@ -321,8 +321,3 @@ C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\Use
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\UserAuthentication\obj\Debug\net8.0\UserAuthentication.pdb
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\UserAuthentication\obj\Debug\net8.0\UserAuthentication.genruntimeconfig.cache
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\UserAuthentication\obj\Debug\net8.0\ref\UserAuthentication.dll
-C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\UserAuthentication\bin\Debug\net8.0\FluentValidation.dll
-C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\UserAuthentication\bin\Debug\net8.0\IPAddressRange.dll
-C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\UserAuthentication\bin\Debug\net8.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
-C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\UserAuthentication\bin\Debug\net8.0\Microsoft.Extensions.DiagnosticAdapter.dll
-C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\UserAuthentication\bin\Debug\net8.0\Ocelot.dll
