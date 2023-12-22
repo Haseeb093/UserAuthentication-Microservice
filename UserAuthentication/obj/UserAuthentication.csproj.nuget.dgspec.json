@@ -195,10 +195,6 @@
               "target": "Package",
               "version": "[13.0.3, )"
             },
-            "Ocelot": {
-              "target": "Package",
-              "version": "[22.0.1, )"
-            },
             "Swashbuckle.AspNetCore.Swagger": {
               "target": "Package",
               "version": "[6.5.0, )"

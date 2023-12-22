@@ -1,0 +1,31 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5018"
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/Login",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/Api/Login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5043
+        }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/gateway/Admins",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/WeatherForecast/Testing",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5043
+        }
+      ]
+    }
+  ]
+}
