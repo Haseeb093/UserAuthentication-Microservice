@@ -1,22 +1,23 @@
 {
   "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5018"
+    "BaseUrl": "http://localhost:5119"
   },
   "Routes": [
+
     {
-      "UpstreamPathTemplate": "/Login",
-      "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/Api/Login",
+      "UpstreamPathTemplate": "/login",
+      "UpstreamHttpMethod": [ "Post" ],
       "DownstreamScheme": "http",
+      "DownstreamPathTemplate": "/api/Login",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5043
+          "Port": 5148
         }
       ]
     },
     {
-      "UpstreamPathTemplate": "/gateway/Admins",
+      "UpstreamPathTemplate": "/GetWaeather",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/WeatherForecast/Testing",
       "DownstreamScheme": "http",
@@ -26,6 +27,40 @@
           "Port": 5043
         }
       ]
+    },
+    {
+      "UpstreamPathTemplate": "/GetWaeather1",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/WeatherForecast/Testing",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5043
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "UpstreamPathTemplate": "/GetWaeather2",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/WeatherForecast/Testing",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5043
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      },
+      "RouteClaimsRequirement": {
+        "Roles": "Admin"
+      }
     }
+
   ]
 }

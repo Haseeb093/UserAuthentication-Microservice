@@ -7,7 +7,7 @@ using Domain.Helper;
 
 namespace UserAuthentication.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class AuthenticateController : ControllerBase
     {
@@ -19,7 +19,7 @@ namespace UserAuthentication.Controllers
         }
 
         [HttpPost]
-        [Route("login")]
+        [Route("Login")]
         public async Task<ResponseObject<LoginResponse>> Login(JObject requestObject)
         {
             var responseObj = new ResponseObject<LoginResponse>();
@@ -36,7 +36,7 @@ namespace UserAuthentication.Controllers
         }
 
         [HttpPost]
-        [Route("register")]
+        [Route("Register")]
         public async Task<ResponseObject<List<Error>>> Register(JObject requestObject)
         {
             var responseObj = new ResponseObject<List<Error>>();
