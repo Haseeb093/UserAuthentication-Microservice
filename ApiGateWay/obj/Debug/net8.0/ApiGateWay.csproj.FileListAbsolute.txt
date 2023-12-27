@@ -39,3 +39,11 @@ C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\Api
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\ApiGateWay\obj\Debug\net8.0\ApiGateWay.pdb
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\ApiGateWay\obj\Debug\net8.0\ApiGateWay.genruntimeconfig.cache
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\ApiGateWay\obj\Debug\net8.0\ref\ApiGateWay.dll
+C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\ApiGateWay\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\ApiGateWay\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\ApiGateWay\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\ApiGateWay\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\ApiGateWay\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\ApiGateWay\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\ApiGateWay\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\ApiGateWay\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

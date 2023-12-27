@@ -120,7 +120,6 @@ namespace Service.Validation
                 );
             tokenResponse.ValidTo = token.ValidTo;
             tokenResponse.Token = new JwtSecurityTokenHandler().WriteToken(token);
-            tokenResponse.UserName = authClaims?.FirstOrDefault(s => s.Type.Contains(ClaimTypes.Name))?.Value;
             return tokenResponse;
         }
     }

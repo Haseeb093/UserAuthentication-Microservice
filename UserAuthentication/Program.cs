@@ -50,7 +50,6 @@ builder.Services.AddControllersWithViews().AddNewtonsoftJson();
 
 var app = builder.Build();
 
-//await app.UseOcelot();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

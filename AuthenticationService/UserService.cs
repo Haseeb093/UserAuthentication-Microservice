@@ -30,13 +30,13 @@ namespace AuthenticationService
                 var userRoles = await _userManager.GetRolesAsync(user);
                 var authClaims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(JwtRegisteredClaimNames.Name, user.UserName),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 };
 
                 foreach (var userRole in userRoles)
                 {
-                    authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+                    authClaims.Add(new Claim("Roles", userRole));
                 }
 
                 response.Data = GetToken(authClaims);
@@ -78,9 +78,9 @@ namespace AuthenticationService
 
                     switch (registerParam.Role)
                     {
-                        case "Admin":
-                            await _userManager.AddToRoleAsync(user, UserRoles.Admin.ToString());
-                            break;
+                        //case "Admin":
+                        //    await _userManager.AddToRoleAsync(user, UserRoles.Admin.ToString());
+                        //    break;
                         case "Doctor":
                             await _userManager.AddToRoleAsync(user, UserRoles.Doctor.ToString());
                             break;
