@@ -78,9 +78,9 @@ namespace AuthenticationService
 
                     switch (registerParam.Role)
                     {
-                        //case "Admin":
-                        //    await _userManager.AddToRoleAsync(user, UserRoles.Admin.ToString());
-                        //    break;
+                        case "Admin":
+                            await _userManager.AddToRoleAsync(user, UserRoles.Admin.ToString());
+                            break;
                         case "Doctor":
                             await _userManager.AddToRoleAsync(user, UserRoles.Doctor.ToString());
                             break;
