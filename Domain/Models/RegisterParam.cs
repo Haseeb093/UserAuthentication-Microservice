@@ -4,6 +4,11 @@ namespace Domain.Models
 {
     public class RegisterParam
     {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Address1 { get; set; }
+        public string Address2 { get; set; }
+
         [Required(ErrorMessage = "User Name is required")]
         public string Username { get; set; }
 
