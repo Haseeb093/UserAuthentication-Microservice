@@ -9,6 +9,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Service.Validation
@@ -49,13 +50,22 @@ namespace Service.Validation
                                                && !string.IsNullOrEmpty(registerParam.Password) && registerParam.Username.Trim() != "" &&
                                                registerParam.Email.Trim() != "" && registerParam.Password.Trim() != "")
             {
+                if (!ValidateEmail(registerParam.Email))
+                {
+                    isValid = false;
+                    Error error = new Error();
+                    error.Code = "EmailNotValid";
+                    error.Message = "Enter Valid Email Address !";
+                    response.Data.Add(error);
+                }
+
                 var regUser = await GetUserByName(registerParam.Username);
 
                 if (regUser != null)
                 {
                     isValid = false;
                     Error error = new Error();
-                    error.Code = "User Exist";
+                    error.Code = "UserExist";
                     error.Message = "User Name Already Exist !";
                     response.Data.Add(error);
                 }
@@ -66,7 +76,7 @@ namespace Service.Validation
                 {
                     isValid = false;
                     Error error = new Error();
-                    error.Code = "Email Exist";
+                    error.Code = "EmailExist";
                     error.Message = "User Email Already Exist !";
                     response.Data.Add(error);
                 }
@@ -77,6 +87,12 @@ namespace Service.Validation
                 response.Message = "Field Required !";
             }
             return isValid;
+        }
+
+        private bool ValidateEmail(string email)
+        {
+            string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov)$";
+            return Regex.IsMatch(email, regex);
         }
 
         protected bool RegisterResponseValidation(IdentityResult identityResult, ResponseObject<List<Error>> responseObject)
