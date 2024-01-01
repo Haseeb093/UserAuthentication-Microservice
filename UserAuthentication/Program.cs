@@ -6,12 +6,16 @@ using Microsoft.IdentityModel.Tokens;
 using Service.Services;
 using System.Text;
 using Services.ApplicationContext;
+using Service.AutoMapperr;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container for Dependecy Injection.
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
+Log.Logger = new LoggerConfiguration().ReadFrom.Configuration(builder.Configuration).CreateLogger();
 
 // For Entity Framework
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("MyConnectionString")));

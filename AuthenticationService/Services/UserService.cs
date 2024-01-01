@@ -1,4 +1,5 @@
-﻿using Domain.CustomModels;
+﻿using AutoMapper;
+using Domain.CustomModels;
 using Domain.Enum;
 using Domain.Helper;
 using Domain.Models;
@@ -17,13 +18,13 @@ namespace AuthenticationService
 {
     public class UserService : HelperService, IUserService
     {
+        private readonly IMapper mapper;
         private readonly ApplicationDbContext _dbContext;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-
-
-        public UserService(IConfiguration configuration, ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager) : base(configuration, userManager)
+        public UserService(IConfiguration configuration, IMapper _mapper, ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager) : base(configuration, userManager)
         {
+            mapper = _mapper;
             _dbContext = dbContext;
             _roleManager = roleManager;
         }
@@ -113,26 +114,26 @@ namespace AuthenticationService
             return response;
         }
 
-        public async Task<ResponseObject<List<Countries>>> GetCountries()
+        public async Task<ResponseObject<List<CountriesDto>>> GetCountries()
         {
-            var response = new ResponseObject<List<Countries>>();
-            response.Data = await _dbContext.Countries.ToListAsync();
+            var response = new ResponseObject<List<CountriesDto>>();
+            response.Data = mapper.Map<List<CountriesDto>>(await _dbContext.Countries.ToListAsync());
             Helper.SetSuccessRespose(response);
             return response;
         }
 
-        public async Task<ResponseObject<List<Cities>>> GetStateCities(int stateId)
+        public async Task<ResponseObject<List<CitiesDto>>> GetStateCities(int stateId)
         {
-            var response = new ResponseObject<List<Cities>>();
-            response.Data = await _dbContext.Cities.Where(s => s.States.StateId == stateId).ToListAsync();
+            var response = new ResponseObject<List<CitiesDto>>();
+            response.Data = mapper.Map<List<CitiesDto>>(await _dbContext.Cities.Where(s => s.States.StateId == stateId).ToListAsync());
             Helper.SetSuccessRespose(response);
             return response;
         }
 
-        public async Task<ResponseObject<List<States>>> GetCountryStates(int countryId)
+        public async Task<ResponseObject<List<StatesDto>>> GetCountryStates(int countryId)
         {
-            var response = new ResponseObject<List<States>>();
-            response.Data = await _dbContext.States.Where(s => s.Countries.CountryId == countryId).ToListAsync();
+            var response = new ResponseObject<List<StatesDto>>();
+            response.Data = mapper.Map<List<StatesDto>>(await _dbContext.States.Where(s => s.Countries.CountryId == countryId).ToListAsync());
             Helper.SetSuccessRespose(response);
             return response;
         }

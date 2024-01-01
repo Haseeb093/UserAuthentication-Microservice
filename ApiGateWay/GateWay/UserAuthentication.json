@@ -17,7 +17,7 @@
     },
     {
       "UpstreamPathTemplate": "/Gateway/Register",
-      "UpstreamHttpMethod": [ "Get" ],
+      "UpstreamHttpMethod": [ "Post" ],
       "DownstreamPathTemplate": "/api/Register",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
@@ -25,16 +25,16 @@
           "Host": "localhost",
           "Port": 5148
         }
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      },
-      "RouteClaimsRequirement": {
-        "Roles": "Admin"
-      }
+      ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer"
+      //},
+      //"RouteClaimsRequirement": {
+      //  "Roles": "Admin"
+      //}
     },
     {
-      "UpstreamPathTemplate": "/GetCountries",
+      "UpstreamPathTemplate": "/Gateway/GetCountries",
       "UpstreamHttpMethod": [ "Get" ],
       "DownstreamPathTemplate": "/api/GetCountries",
       "DownstreamScheme": "http",
@@ -46,22 +46,28 @@
       ]
     },
     {
-      "UpstreamPathTemplate": "/GetWaeather",
+      "UpstreamPathTemplate": "/Gateway/GetStates",
       "UpstreamHttpMethod": [ "Get" ],
-      "DownstreamPathTemplate": "/WeatherForecast/Testing",
+      "DownstreamPathTemplate": "/api/GetStates",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": 5043
+          "Port": 5148
         }
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      },
-      "RouteClaimsRequirement": {
-        "Roles": "Admin"
-      }
+      ]
+    },
+    {
+      "UpstreamPathTemplate": "/Gateway/GetCities",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/api/GetCities",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5148
+        }
+      ]
     }
 
   ]

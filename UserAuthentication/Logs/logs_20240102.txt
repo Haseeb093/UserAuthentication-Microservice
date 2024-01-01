@@ -1,0 +1,27 @@
+2024-01-02 01:14:48.353 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Object reference not set to an instance of an object. 
+ Stack Trace:    at UserAuthentication.UserControllers.UserController.GetStates(JObject requestObject) in C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 79 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-02 01:18:48.336 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Unexpected character encountered while parsing value: {. Path '', line 1, position 1. 
+ Stack Trace:    at Newtonsoft.Json.JsonTextReader.ReadNumberValue(ReadType readType)
+   at Newtonsoft.Json.JsonTextReader.ReadAsInt32()
+   at Newtonsoft.Json.JsonReader.ReadForType(JsonContract contract, Boolean hasConverter)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at UserAuthentication.UserControllers.UserController.GetCities(JObject requestObject) in C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 96 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-02 01:19:22.132 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Object reference not set to an instance of an object. 
+ Stack Trace:    at UserAuthentication.UserControllers.UserController.GetCities(JObject requestObject) in C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 96 
+ ------------------------------------------------------------------------------------------------ 
+
