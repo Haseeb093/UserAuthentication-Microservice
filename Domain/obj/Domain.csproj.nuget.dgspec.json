@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication-Microservice\\Domain\\Domain.csproj": {}
+    "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication-Microservice\\Domain\\Domain.csproj": {
+    "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication-Microservice\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication-Microservice\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\hshahid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication-Microservice\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\Haseeb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hshahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Haseeb\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -41,6 +41,10 @@
           "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Serilog.AspNetCore": {
               "target": "Package",
               "version": "[8.0.0, )"
             }

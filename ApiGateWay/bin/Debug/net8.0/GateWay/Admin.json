@@ -1,0 +1,25 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5119"
+  },
+  "Routes": [
+    {
+      "UpstreamPathTemplate": "/GetWaeather",
+      "UpstreamHttpMethod": [ "Get" ],
+      "DownstreamPathTemplate": "/WeatherForecast/Testing",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5043
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      },
+      "RouteClaimsRequirement": {
+        "Roles": "Admin"
+      }
+    }
+  ]
+}

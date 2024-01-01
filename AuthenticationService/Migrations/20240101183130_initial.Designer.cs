@@ -12,7 +12,7 @@ using Services.ApplicationContext;
 namespace Service.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240101121302_initial")]
+    [Migration("20240101183130_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -322,8 +322,11 @@ namespace Service.Migrations
                     b.Property<string>("Address2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("City")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("City_Id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("Country_Id")
+                        .HasColumnType("int");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -348,8 +351,8 @@ namespace Service.Migrations
                     b.Property<string>("PostalCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("State")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("State_Id")
+                        .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -358,6 +361,12 @@ namespace Service.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("getdate()");
+
+                    b.HasIndex("City_Id");
+
+                    b.HasIndex("Country_Id");
+
+                    b.HasIndex("State_Id");
 
                     b.HasDiscriminator().HasValue("User");
                 });
@@ -429,6 +438,27 @@ namespace Service.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Models.User", b =>
+                {
+                    b.HasOne("Domain.Models.Cities", "CityId")
+                        .WithMany()
+                        .HasForeignKey("City_Id");
+
+                    b.HasOne("Domain.Models.Countries", "CountryId")
+                        .WithMany()
+                        .HasForeignKey("Country_Id");
+
+                    b.HasOne("Domain.Models.States", "State")
+                        .WithMany()
+                        .HasForeignKey("State_Id");
+
+                    b.Navigation("CityId");
+
+                    b.Navigation("CountryId");
+
+                    b.Navigation("State");
                 });
 #pragma warning restore 612, 618
         }
