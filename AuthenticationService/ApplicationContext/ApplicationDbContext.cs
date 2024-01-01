@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
-using UserAuthentication.Models;
+using Domain.Models;
 
-namespace UserAuthentication.Auth
+namespace Services.ApplicationContext
 {
     public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
@@ -23,7 +22,7 @@ namespace UserAuthentication.Auth
             modelBuilder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
             modelBuilder.Entity<User>().Property(b => b.UpdatedDate).HasDefaultValueSql("getdate()");
             modelBuilder.Entity<User>().Property(b => b.InsertedDate).HasDefaultValueSql("getdate()");
-
+           
         }
 
         public DbSet<Cities> Cities { get; set; }

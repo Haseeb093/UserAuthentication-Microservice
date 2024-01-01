@@ -3,14 +3,32 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace UserAuthentication.Migrations
+namespace Service.Migrations
 {
     /// <inheritdoc />
-    public partial class initi : Migration
+    public partial class changes : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Countries",
+                columns: table => new
+                {
+                    CountryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsoCode = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NiceName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NumCode = table.Column<int>(type: "int", nullable: true),
+                    PhoneCode = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Countries", x => x.CountryId);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Roles",
                 columns: table => new
@@ -62,6 +80,26 @@ namespace UserAuthentication.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "States",
+                columns: table => new
+                {
+                    StateId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Country_Id = table.Column<int>(type: "int", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_States", x => x.StateId);
+                    table.ForeignKey(
+                        name: "FK_States_Countries_Country_Id",
+                        column: x => x.Country_Id,
+                        principalTable: "Countries",
+                        principalColumn: "CountryId");
                 });
 
             migrationBuilder.CreateTable(
@@ -170,6 +208,30 @@ namespace UserAuthentication.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Cities",
+                columns: table => new
+                {
+                    CityId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    State_Id = table.Column<int>(type: "int", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cities", x => x.CityId);
+                    table.ForeignKey(
+                        name: "FK_Cities_States_State_Id",
+                        column: x => x.State_Id,
+                        principalTable: "States",
+                        principalColumn: "StateId");
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cities_State_Id",
+                table: "Cities",
+                column: "State_Id");
+
             migrationBuilder.CreateIndex(
                 name: "IX_RoleClaims_RoleId",
                 table: "RoleClaims",
@@ -181,6 +243,11 @@ namespace UserAuthentication.Migrations
                 column: "NormalizedName",
                 unique: true,
                 filter: "[NormalizedName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_States_Country_Id",
+                table: "States",
+                column: "Country_Id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserClaims_UserId",
@@ -214,6 +281,9 @@ namespace UserAuthentication.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Cities");
+
+            migrationBuilder.DropTable(
                 name: "RoleClaims");
 
             migrationBuilder.DropTable(
@@ -229,10 +299,16 @@ namespace UserAuthentication.Migrations
                 name: "UserTokens");
 
             migrationBuilder.DropTable(
+                name: "States");
+
+            migrationBuilder.DropTable(
                 name: "Roles");
 
             migrationBuilder.DropTable(
                 name: "Users");
+
+            migrationBuilder.DropTable(
+                name: "Countries");
         }
     }
 }
