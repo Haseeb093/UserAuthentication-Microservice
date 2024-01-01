@@ -12,8 +12,8 @@ using Services.ApplicationContext;
 namespace Service.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240101115155_changes")]
-    partial class changes
+    [Migration("20240101121302_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,17 +56,19 @@ namespace Service.Migrations
 
                     b.Property<string>("Code")
                         .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
+                        .HasColumnType("char");
 
                     b.Property<string>("IsoCode")
                         .HasMaxLength(2)
-                        .HasColumnType("nvarchar(2)");
+                        .HasColumnType("char");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
 
                     b.Property<string>("NiceName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
 
                     b.Property<int?>("NumCode")
                         .HasColumnType("int");
@@ -363,7 +365,7 @@ namespace Service.Migrations
             modelBuilder.Entity("Domain.Models.Cities", b =>
                 {
                     b.HasOne("Domain.Models.States", "States")
-                        .WithMany("Cities")
+                        .WithMany()
                         .HasForeignKey("State_Id");
 
                     b.Navigation("States");
@@ -372,7 +374,7 @@ namespace Service.Migrations
             modelBuilder.Entity("Domain.Models.States", b =>
                 {
                     b.HasOne("Domain.Models.Countries", "Countries")
-                        .WithMany("States")
+                        .WithMany()
                         .HasForeignKey("Country_Id");
 
                     b.Navigation("Countries");
@@ -427,16 +429,6 @@ namespace Service.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Domain.Models.Countries", b =>
-                {
-                    b.Navigation("States");
-                });
-
-            modelBuilder.Entity("Domain.Models.States", b =>
-                {
-                    b.Navigation("Cities");
                 });
 #pragma warning restore 612, 618
         }

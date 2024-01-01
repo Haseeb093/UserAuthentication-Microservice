@@ -22,8 +22,9 @@ namespace AuthenticationService
 
 
 
-        public UserService(IConfiguration configuration, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager) : base(configuration, userManager)
+        public UserService(IConfiguration configuration, ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager) : base(configuration, userManager)
         {
+            _dbContext = dbContext;
             _roleManager = roleManager;
         }
 
