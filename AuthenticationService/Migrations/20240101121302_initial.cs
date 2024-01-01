@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Service.Migrations
 {
     /// <inheritdoc />
-    public partial class changes : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,10 +17,10 @@ namespace Service.Migrations
                 {
                     CountryId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    IsoCode = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: true),
-                    Code = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    NiceName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsoCode = table.Column<string>(type: "char(2)", maxLength: 2, nullable: true),
+                    Code = table.Column<string>(type: "char(3)", maxLength: 3, nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: true),
+                    NiceName = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: true),
                     NumCode = table.Column<int>(type: "int", nullable: true),
                     PhoneCode = table.Column<int>(type: "int", nullable: true)
                 },

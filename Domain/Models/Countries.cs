@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 
 namespace Domain.Models
@@ -7,14 +8,17 @@ namespace Domain.Models
     {
         [Key]
         public int CountryId { get; set; }
+        [Column(TypeName = "char")]
         [StringLength(2)]
-        public char? IsoCode { get; set; }
+        public string? IsoCode { get; set; }
+        [Column(TypeName = "char")]
         [StringLength(3)]
-        public char? Code { get; set; } 
+        public string? Code { get; set; }
+        [StringLength(80)]
         public string Name { get; set; }
+        [StringLength(80)]
         public string NiceName { get; set; }
         public int? NumCode { get; set; }
         public int? PhoneCode { get; set; }
-        public ICollection<States> States { get; set; }
     }
 }
