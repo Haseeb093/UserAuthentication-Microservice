@@ -1,4 +1,4 @@
-﻿namespace Domain.Models
+﻿namespace Domain.CustomModels
 {
     public class ResponseObject<T>
     {

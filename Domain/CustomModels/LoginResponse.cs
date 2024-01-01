@@ -1,6 +1,6 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 
-namespace Domain.Models
+namespace Domain.CustomModels
 {
     public class LoginResponse
     {

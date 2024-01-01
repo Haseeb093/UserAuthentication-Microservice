@@ -1,4 +1,5 @@
-﻿using Domain.Models;
+﻿using Domain.CustomModels;
+using Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;

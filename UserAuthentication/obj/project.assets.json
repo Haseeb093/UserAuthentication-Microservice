@@ -4190,7 +4190,6 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 8.0.0",
       "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 8.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 8.0.0",
-      "Newtonsoft.Json >= 13.0.3",
       "Service >= 1.0.0"
     ]
   },
@@ -4253,10 +4252,6 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[8.0.0, )"
-          },
-          "Newtonsoft.Json": {
-            "target": "Package",
-            "version": "[13.0.3, )"
           }
         },
         "imports": [
