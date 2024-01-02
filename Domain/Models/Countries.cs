@@ -10,10 +10,10 @@ namespace Domain.Models
         public int CountryId { get; set; }
         [Column(TypeName = "char")]
         [StringLength(2)]
-        public string? IsoCode { get; set; }
+        public string IsoCode { get; set; }
         [Column(TypeName = "char")]
         [StringLength(3)]
-        public string? Code { get; set; }
+        public string Code { get; set; }
         [StringLength(80)]
         public string Name { get; set; }
         [StringLength(80)]

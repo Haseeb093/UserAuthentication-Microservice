@@ -22,7 +22,6 @@ namespace Services.ApplicationContext
             modelBuilder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
             modelBuilder.Entity<User>().Property(b => b.UpdatedDate).HasDefaultValueSql("getdate()");
             modelBuilder.Entity<User>().Property(b => b.InsertedDate).HasDefaultValueSql("getdate()");
-           
         }
 
         public DbSet<Cities> Cities { get; set; }

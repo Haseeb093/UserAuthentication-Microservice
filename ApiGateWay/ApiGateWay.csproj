@@ -13,8 +13,4 @@
     <PackageReference Include="Ocelot" Version="22.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="GateWay\" />
-  </ItemGroup>
-
 </Project>

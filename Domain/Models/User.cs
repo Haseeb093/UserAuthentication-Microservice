@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Models
 {
@@ -8,8 +9,12 @@ namespace Domain.Models
         public string LastName { get; set; }
         public string Address1 { get; set; }
         public string Address2 { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
+        [ForeignKey("Country_Id")]
+        public Countries CountryId { get; set; }
+        [ForeignKey("State_Id")]
+        public States State { get; set; }
+        [ForeignKey("City_Id")]
+        public Cities CityId { get; set; }
         public string PostalCode { get; set; }
         public string PhonePrimary { get; set; }
         public string PhoneSecondary { get; set; }

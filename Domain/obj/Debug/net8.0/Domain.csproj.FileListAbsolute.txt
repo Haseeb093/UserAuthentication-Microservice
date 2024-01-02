@@ -49,3 +49,16 @@ C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\Dom
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\Domain\obj\Debug\net8.0\ref\Domain.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\Domain\bin\Debug\net8.0\Domain.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\Domain\bin\Debug\net8.0\Domain.pdb
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\Domain\obj\Debug\net8.0\Domain.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\Domain\obj\Debug\net8.0\Domain.pdb
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\Domain\obj\Debug\net8.0\ref\Domain.dll

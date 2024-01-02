@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication-Microservice\\ApiGateWay\\ApiGateWay.csproj": {}
+    "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\ApiGateWay\\ApiGateWay.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication-Microservice\\ApiGateWay\\ApiGateWay.csproj": {
+    "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\ApiGateWay\\ApiGateWay.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication-Microservice\\ApiGateWay\\ApiGateWay.csproj",
+        "projectUniqueName": "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\ApiGateWay\\ApiGateWay.csproj",
         "projectName": "ApiGateWay",
-        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication-Microservice\\ApiGateWay\\ApiGateWay.csproj",
-        "packagesPath": "C:\\Users\\hshahid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication-Microservice\\ApiGateWay\\obj\\",
+        "projectPath": "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\ApiGateWay\\ApiGateWay.csproj",
+        "packagesPath": "C:\\Users\\Haseeb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\ApiGateWay\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hshahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Haseeb\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
