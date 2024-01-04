@@ -5,6 +5,7 @@ using Domain.Helper;
 using Service.Services;
 using Domain.CustomModels;
 using Domain.Models;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace UserAuthentication.UserControllers
 {
@@ -21,12 +22,12 @@ namespace UserAuthentication.UserControllers
 
         [HttpPost]
         [Route("Login")]
-        public async Task<ResponseObject<LoginResponse>> Login(JObject requestObject)
+        public async Task<ResponseObject<TokenDto>> Login(JObject requestObject)
         {
-            var responseObj = new ResponseObject<LoginResponse>();
+            var responseObj = new ResponseObject<TokenDto>();
             try
             {
-                LoginParam loginUser = JsonConvert.DeserializeObject<LoginParam>(requestObject["data"].ToString());
+                LoginDto loginUser = JsonConvert.DeserializeObject<LoginDto>(requestObject["data"].ToString());
                 responseObj = await userService.Login(loginUser);
             }
             catch (Exception ex)
@@ -43,8 +44,9 @@ namespace UserAuthentication.UserControllers
             var responseObj = new ResponseObject<List<Error>>();
             try
             {
-                RegisterParam registerParam = JsonConvert.DeserializeObject<RegisterParam>(requestObject["data"].ToString());
-                responseObj = await userService.Register(registerParam);
+                UserDto userDto = JsonConvert.DeserializeObject<UserDto>(requestObject["data"].ToString());
+                Helper.GetUserFromToken(HttpContext.User, userDto);
+                responseObj = await userService.Register(userDto);
             }
             catch (Exception ex)
             {

@@ -2,7 +2,7 @@
 
 namespace Domain.CustomModels
 {
-    public class LoginParam
+    public class LoginDto
     {
         [Required(ErrorMessage = "User Name is required")]
         public string Username { get; set; }

@@ -1,6 +1,8 @@
 ﻿using Serilog;
 using Domain.Enum;
 using Domain.CustomModels;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Domain.Helper
 {
@@ -24,6 +26,15 @@ namespace Domain.Helper
             string msg = "\n Log Level: Error \n Exception: " + ex.Message + " \n Stack Trace: " + ex.StackTrace +
                 " \n ------------------------------------------------------------------------------------------------ \n";
             Log.Information(msg);
+        }
+
+        public static void GetUserFromToken(ClaimsPrincipal claimsPrincipal, UserDto userDto)
+        {
+            if (claimsPrincipal.Identity.IsAuthenticated)
+            {
+                userDto.InsertedBy = claimsPrincipal?.Identities.FirstOrDefault()?.Claims.FirstOrDefault(s => s.Type == JwtRegisteredClaimNames.Name).Value;
+                userDto.UpdatedBy = claimsPrincipal?.Identities.FirstOrDefault()?.Claims.FirstOrDefault(s => s.Type == JwtRegisteredClaimNames.Name).Value;
+            }
         }
 
     }

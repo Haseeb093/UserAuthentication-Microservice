@@ -2,7 +2,7 @@
 
 namespace Domain.CustomModels
 {
-    public class LoginResponse
+    public class TokenDto
     {
         public string Token { get; set; }
         public DateTime ValidTo { get; set; }

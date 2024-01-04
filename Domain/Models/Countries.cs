@@ -16,8 +16,6 @@ namespace Domain.Models
         public string Code { get; set; }
         [StringLength(80)]
         public string Name { get; set; }
-        [StringLength(80)]
-        public string NiceName { get; set; }
         public int? NumCode { get; set; }
         public int? PhoneCode { get; set; }
     }

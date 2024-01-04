@@ -383,6 +383,13 @@ C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\Use
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\UserAuthentication\obj\Debug\net8.0\UserAuthentication.pdb
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\UserAuthentication\obj\Debug\net8.0\UserAuthentication.genruntimeconfig.cache
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\UserAuthentication\obj\Debug\net8.0\ref\UserAuthentication.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.csproj.AssemblyReference.cache
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.AssemblyInfoInputs.cache
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.AssemblyInfo.cs
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.csproj.CoreCompileInputs.cache
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.sourcelink.json
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\appsettings.json
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\UserAuthentication.exe
@@ -390,6 +397,8 @@ C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\UserAuthentication.runtimeconfig.json
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\UserAuthentication.dll
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\UserAuthentication.pdb
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Azure.Identity.dll
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Humanizer.dll
@@ -422,6 +431,15 @@ C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Mono.TextTemplating.dll
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.AspNetCore.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.Sinks.Console.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.Sinks.File.dll
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\System.CodeDom.dll
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\System.Composition.AttributedModel.dll
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\System.Composition.Convention.dll
@@ -504,13 +522,6 @@ C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Service.dll
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Service.pdb
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Domain.pdb
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.csproj.AssemblyReference.cache
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.AssemblyInfoInputs.cache
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.AssemblyInfo.cs
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.csproj.CoreCompileInputs.cache
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.sourcelink.json
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\staticwebassets\msbuild.UserAuthentication.Microsoft.AspNetCore.StaticWebAssets.props
@@ -525,14 +536,3 @@ C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.pdb
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.genruntimeconfig.cache
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\obj\Debug\net8.0\ref\UserAuthentication.dll
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\AutoMapper.dll
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.dll
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.AspNetCore.dll
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.Extensions.Logging.dll
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.Formatting.Compact.dll
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.Settings.Configuration.dll
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.Sinks.Console.dll
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.Sinks.Debug.dll
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Serilog.Sinks.File.dll

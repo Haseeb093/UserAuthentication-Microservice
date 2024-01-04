@@ -49,6 +49,8 @@ C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\Api
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication-Microservice\ApiGateWay\obj\Debug\net8.0\ref\ApiGateWay.dll
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\ApiGateWay\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\ApiGateWay\bin\Debug\net8.0\appsettings.json
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\ApiGateWay\bin\Debug\net8.0\GateWay\Admin.json
+C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\ApiGateWay\bin\Debug\net8.0\GateWay\UserAuthentication.json
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\ApiGateWay\bin\Debug\net8.0\ApiGateWay.exe
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\ApiGateWay\bin\Debug\net8.0\ApiGateWay.deps.json
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\ApiGateWay\bin\Debug\net8.0\ApiGateWay.runtimeconfig.json
@@ -95,5 +97,3 @@ C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\ApiGateWay\obj\Deb
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\ApiGateWay\obj\Debug\net8.0\ApiGateWay.pdb
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\ApiGateWay\obj\Debug\net8.0\ApiGateWay.genruntimeconfig.cache
 C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\ApiGateWay\obj\Debug\net8.0\ref\ApiGateWay.dll
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\ApiGateWay\bin\Debug\net8.0\GateWay\Admin.json
-C:\Users\Haseeb\Desktop\Work\Microservices\UserAuthentication\ApiGateWay\bin\Debug\net8.0\GateWay\UserAuthentication.json
