@@ -7,7 +7,7 @@ namespace Domain.Models
     {
         [Key]
         public int CityId { get; set; }
-        [ForeignKey("State_Id")]
+        [ForeignKey("StateId")]
         public States States { get; set; }
         public string Name { get; set; }
     }

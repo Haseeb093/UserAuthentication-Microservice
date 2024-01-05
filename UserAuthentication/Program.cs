@@ -8,6 +8,7 @@ using System.Text;
 using Services.ApplicationContext;
 using Service.AutoMapperr;
 using Serilog;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
@@ -44,6 +45,14 @@ builder.Services.AddAuthentication(options =>
          IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JWT:Secret"]))
      };
  });
+
+//User lockOut Configurations
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Lockout.AllowedForNewUsers = true;
+    options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(3);
+    options.Lockout.MaxFailedAccessAttempts = 3;
+});
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

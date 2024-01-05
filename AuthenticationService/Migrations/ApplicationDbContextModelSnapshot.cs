@@ -33,12 +33,12 @@ namespace Service.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("State_Id")
+                    b.Property<int?>("StateId")
                         .HasColumnType("int");
 
                     b.HasKey("CityId");
 
-                    b.HasIndex("State_Id");
+                    b.HasIndex("StateId");
 
                     b.ToTable("Cities");
                 });
@@ -60,10 +60,6 @@ namespace Service.Migrations
                         .HasColumnType("char");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(80)
-                        .HasColumnType("nvarchar(80)");
-
-                    b.Property<string>("NiceName")
                         .HasMaxLength(80)
                         .HasColumnType("nvarchar(80)");
 
@@ -89,7 +85,7 @@ namespace Service.Migrations
                     b.Property<string>("Code")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("Country_Id")
+                    b.Property<int?>("CountryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -97,7 +93,7 @@ namespace Service.Migrations
 
                     b.HasKey("StateId");
 
-                    b.HasIndex("Country_Id");
+                    b.HasIndex("CountryId");
 
                     b.ToTable("States");
                 });
@@ -319,10 +315,10 @@ namespace Service.Migrations
                     b.Property<string>("Address2")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("City_Id")
+                    b.Property<int>("CityId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Country_Id")
+                    b.Property<int>("CountryId")
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
@@ -339,16 +335,13 @@ namespace Service.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("PhonePrimary")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneSecondary")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("PostalCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("State_Id")
+                    b.Property<string>("SecondaryPhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StateId")
                         .HasColumnType("int");
 
                     b.Property<string>("UpdatedBy")
@@ -359,11 +352,11 @@ namespace Service.Migrations
                         .HasColumnType("datetime2")
                         .HasDefaultValueSql("getdate()");
 
-                    b.HasIndex("City_Id");
+                    b.HasIndex("CityId");
 
-                    b.HasIndex("Country_Id");
+                    b.HasIndex("CountryId");
 
-                    b.HasIndex("State_Id");
+                    b.HasIndex("StateId");
 
                     b.HasDiscriminator().HasValue("User");
                 });
@@ -372,7 +365,7 @@ namespace Service.Migrations
                 {
                     b.HasOne("Domain.Models.States", "States")
                         .WithMany()
-                        .HasForeignKey("State_Id");
+                        .HasForeignKey("StateId");
 
                     b.Navigation("States");
                 });
@@ -381,7 +374,7 @@ namespace Service.Migrations
                 {
                     b.HasOne("Domain.Models.Countries", "Countries")
                         .WithMany()
-                        .HasForeignKey("Country_Id");
+                        .HasForeignKey("CountryId");
 
                     b.Navigation("Countries");
                 });
@@ -439,21 +432,27 @@ namespace Service.Migrations
 
             modelBuilder.Entity("Domain.Models.User", b =>
                 {
-                    b.HasOne("Domain.Models.Cities", "CityId")
+                    b.HasOne("Domain.Models.Cities", "City")
                         .WithMany()
-                        .HasForeignKey("City_Id");
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("Domain.Models.Countries", "CountryId")
+                    b.HasOne("Domain.Models.Countries", "Country")
                         .WithMany()
-                        .HasForeignKey("Country_Id");
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Models.States", "State")
                         .WithMany()
-                        .HasForeignKey("State_Id");
+                        .HasForeignKey("StateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("CityId");
+                    b.Navigation("City");
 
-                    b.Navigation("CountryId");
+                    b.Navigation("Country");
 
                     b.Navigation("State");
                 });

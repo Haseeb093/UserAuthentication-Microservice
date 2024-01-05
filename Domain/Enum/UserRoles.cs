@@ -12,7 +12,7 @@ namespace Domain.Enum
         Doctor,
         [DefaultValue("Patient")]
         Patient,
-        [DefaultValue("User")]
-        User
+        [DefaultValue("Staff")]
+        Staff
     }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Service.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,7 +20,6 @@ namespace Service.Migrations
                     IsoCode = table.Column<string>(type: "char(2)", maxLength: 2, nullable: true),
                     Code = table.Column<string>(type: "char(3)", maxLength: 3, nullable: true),
                     Name = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: true),
-                    NiceName = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: true),
                     NumCode = table.Column<int>(type: "int", nullable: true),
                     PhoneCode = table.Column<int>(type: "int", nullable: true)
                 },
@@ -49,7 +48,7 @@ namespace Service.Migrations
                 {
                     StateId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Country_Id = table.Column<int>(type: "int", nullable: true),
+                    CountryId = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Code = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -57,8 +56,8 @@ namespace Service.Migrations
                 {
                     table.PrimaryKey("PK_States", x => x.StateId);
                     table.ForeignKey(
-                        name: "FK_States_Countries_Country_Id",
-                        column: x => x.Country_Id,
+                        name: "FK_States_Countries_CountryId",
+                        column: x => x.CountryId,
                         principalTable: "Countries",
                         principalColumn: "CountryId");
                 });
@@ -90,15 +89,15 @@ namespace Service.Migrations
                 {
                     CityId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    State_Id = table.Column<int>(type: "int", nullable: true),
+                    StateId = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Cities", x => x.CityId);
                     table.ForeignKey(
-                        name: "FK_Cities_States_State_Id",
-                        column: x => x.State_Id,
+                        name: "FK_Cities_States_StateId",
+                        column: x => x.StateId,
                         principalTable: "States",
                         principalColumn: "StateId");
                 });
@@ -113,12 +112,11 @@ namespace Service.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Country_Id = table.Column<int>(type: "int", nullable: true),
-                    State_Id = table.Column<int>(type: "int", nullable: true),
-                    City_Id = table.Column<int>(type: "int", nullable: true),
+                    CountryId = table.Column<int>(type: "int", nullable: true),
+                    StateId = table.Column<int>(type: "int", nullable: true),
+                    CityId = table.Column<int>(type: "int", nullable: true),
                     PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhonePrimary = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneSecondary = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecondaryPhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     InsertedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     InsertedDate = table.Column<DateTime>(type: "datetime2", nullable: true, defaultValueSql: "getdate()"),
@@ -142,20 +140,23 @@ namespace Service.Migrations
                 {
                     table.PrimaryKey("PK_Users", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Users_Cities_City_Id",
-                        column: x => x.City_Id,
+                        name: "FK_Users_Cities_CityId",
+                        column: x => x.CityId,
                         principalTable: "Cities",
-                        principalColumn: "CityId");
+                        principalColumn: "CityId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Users_Countries_Country_Id",
-                        column: x => x.Country_Id,
+                        name: "FK_Users_Countries_CountryId",
+                        column: x => x.CountryId,
                         principalTable: "Countries",
-                        principalColumn: "CountryId");
+                        principalColumn: "CountryId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Users_States_State_Id",
-                        column: x => x.State_Id,
+                        name: "FK_Users_States_StateId",
+                        column: x => x.StateId,
                         principalTable: "States",
-                        principalColumn: "StateId");
+                        principalColumn: "StateId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -244,9 +245,9 @@ namespace Service.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cities_State_Id",
+                name: "IX_Cities_StateId",
                 table: "Cities",
-                column: "State_Id");
+                column: "StateId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_RoleClaims_RoleId",
@@ -261,9 +262,9 @@ namespace Service.Migrations
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_States_Country_Id",
+                name: "IX_States_CountryId",
                 table: "States",
-                column: "Country_Id");
+                column: "CountryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_UserClaims_UserId",
@@ -286,19 +287,19 @@ namespace Service.Migrations
                 column: "NormalizedEmail");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_City_Id",
+                name: "IX_Users_CityId",
                 table: "Users",
-                column: "City_Id");
+                column: "CityId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_Country_Id",
+                name: "IX_Users_CountryId",
                 table: "Users",
-                column: "Country_Id");
+                column: "CountryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Users_State_Id",
+                name: "IX_Users_StateId",
                 table: "Users",
-                column: "State_Id");
+                column: "StateId");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",

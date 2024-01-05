@@ -13,7 +13,6 @@ namespace Domain.CustomModels
         public int CountryId { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
-        public string NiceName { get; set; }
         public int? PhoneCode { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Domain.CustomModels;
+﻿using Azure;
+using Domain.CustomModels;
+using Domain.Helper;
 using Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -20,46 +22,81 @@ namespace Service.Validation
         protected IdentityUser user = null;
         private readonly IConfiguration _configuration;
         protected readonly UserManager<IdentityUser> _userManager;
+        protected readonly SignInManager<IdentityUser> _signInManager;
 
-        public HelperService(IConfiguration configuration, UserManager<IdentityUser> userManager)
+        public HelperService(IConfiguration configuration, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
             _configuration = configuration;
         }
 
-        protected async Task<bool> LoginValidation(LoginParam loginParam, ResponseObject<LoginResponse> responseObject)
+        protected async Task<bool> LoginValidation(LoginDto loginDto, ResponseObject<TokenDto> responseObject)
         {
-            if (loginParam != null && !string.IsNullOrEmpty(loginParam.Username) && loginParam.Username.Trim() != "")
+            bool isValid = false;
+            if (loginDto != null && !string.IsNullOrEmpty(loginDto.Username) && loginDto.Username.Trim() != "")
             {
-                user = await GetUserByName(loginParam.Username);
+                user = await GetUserByName(loginDto.Username);
 
-                if (user != null && !string.IsNullOrEmpty(loginParam.Password) && loginParam.Password.Trim() != "" && await _userManager.CheckPasswordAsync(user, loginParam.Password))
+                if (user != null && !string.IsNullOrEmpty(loginDto.Password) && loginDto.Password.Trim() != "")
                 {
-                    return true;
+                    var login = await _signInManager.PasswordSignInAsync(loginDto.Username, loginDto.Password, false, lockoutOnFailure: true);
+
+                    if (login.Succeeded)
+                        isValid = true;
+
+                    if (login.IsLockedOut)
+                    {
+                        responseObject.Message = "User Locked Out  !";
+                        isValid = false;
+                    }
                 }
             }
             responseObject.Message = "User Name or Password not Matched !";
-            return false;
+
+            if (isValid)
+                return isValid;
+            else
+            {
+                Helper.SetFailuerRespose(responseObject);
+                return isValid;
+            }
         }
 
-        protected async Task<bool> RegisterValidation(RegisterParam registerParam, ResponseObject<List<Error>> response)
+        protected async Task<bool> RegisterValidation(UserDto registerParam, ResponseObject<List<Error>> response)
         {
             bool isValid = true;
             response.Data = new List<Error>();
 
-            if (registerParam != null && !string.IsNullOrEmpty(registerParam.Username) && !string.IsNullOrEmpty(registerParam.Email)
-                                               && !string.IsNullOrEmpty(registerParam.Password) && registerParam.Username.Trim() != "" &&
-                                               registerParam.Email.Trim() != "" && registerParam.Password.Trim() != "")
+            if (string.IsNullOrEmpty(registerParam.FirstName) || string.IsNullOrEmpty(registerParam.LastName) || registerParam.FirstName.Trim() == "" || registerParam.LastName.Trim() == "")
             {
-                if (!ValidateEmail(registerParam.Email))
-                {
-                    isValid = false;
-                    Error error = new Error();
-                    error.Code = "EmailNotValid";
-                    error.Message = "Enter Valid Email Address !";
-                    response.Data.Add(error);
-                }
+                isValid = false;
+                Error error = new Error();
+                error.Code = "FirstNameNotValid";
+                error.Message = "First or Last Name is Missing !";
+                response.Data.Add(error);
+            }
 
+            if (string.IsNullOrEmpty(registerParam.PhoneNumber) || registerParam.PhoneNumber.Trim() == "")
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "PhoneNumberNotValid";
+                error.Message = "Phone Number is Missing !";
+                response.Data.Add(error);
+            }
+
+
+            if (string.IsNullOrEmpty(registerParam.Username) || registerParam.Username.Trim() == "")
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "UsernameNotValid";
+                error.Message = "Username is Missing !";
+                response.Data.Add(error);
+            }
+            else
+            {
                 var regUser = await GetUserByName(registerParam.Username);
 
                 if (regUser != null)
@@ -70,7 +107,18 @@ namespace Service.Validation
                     error.Message = "User Name Already Exist !";
                     response.Data.Add(error);
                 }
+            }
 
+            if (string.IsNullOrEmpty(registerParam.Email) || registerParam.Email.Trim() == "" | !ValidateEmail(registerParam.Email))
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "EmailNotValid";
+                error.Message = "Enter Valid Email Address !";
+                response.Data.Add(error);
+            }
+            else
+            {
                 var regEmail = await GetUserByEmail(registerParam.Email);
 
                 if (regEmail != null)
@@ -82,12 +130,14 @@ namespace Service.Validation
                     response.Data.Add(error);
                 }
             }
+
+            if (isValid)
+                return isValid;
             else
             {
-                isValid = false;
-                response.Message = "Field Required !";
+                Helper.SetFailuerRespose(response);
+                return isValid;
             }
-            return isValid;
         }
 
         private bool ValidateEmail(string email)
@@ -107,11 +157,13 @@ namespace Service.Validation
                     error.Message = err.Description;
                     responseObject.Data.Add(error);
                 }
+                Helper.SetFailuerRespose(responseObject);
             }
             else
             {
                 responseObject.Message = "User Registered Successfully";
             }
+
             return identityResult.Succeeded;
         }
 
@@ -125,9 +177,8 @@ namespace Service.Validation
             return await _userManager.FindByEmailAsync(email);
         }
 
-        protected LoginResponse GetToken(List<Claim> authClaims)
+        protected TokenDto GetToken(List<Claim> authClaims)
         {
-            var tokenResponse = new LoginResponse();
             var token = new JwtSecurityToken(
                 issuer: _configuration["JWT:ValidIssuer"],
                 audience: _configuration["JWT:ValidAudience"],
@@ -135,9 +186,11 @@ namespace Service.Validation
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"])), SecurityAlgorithms.HmacSha256)
                 );
-            tokenResponse.ValidTo = token.ValidTo;
-            tokenResponse.Token = new JwtSecurityTokenHandler().WriteToken(token);
-            return tokenResponse;
+            return new TokenDto()
+            {
+                ValidTo = token.ValidTo,
+                Token = new JwtSecurityTokenHandler().WriteToken(token)
+            };
         }
     }
 }
