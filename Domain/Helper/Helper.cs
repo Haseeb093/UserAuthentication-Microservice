@@ -28,13 +28,14 @@ namespace Domain.Helper
             Log.Information(msg);
         }
 
-        public static void GetUserFromToken(ClaimsPrincipal claimsPrincipal, UserDto userDto)
+        public static string GetUserFromToken(ClaimsPrincipal claimsPrincipal)
         {
-            if (claimsPrincipal.Identity.IsAuthenticated)
+            string userNmae = "";
+            if (claimsPrincipal != null && claimsPrincipal.Identity.IsAuthenticated)
             {
-                userDto.InsertedBy = claimsPrincipal?.Identities.FirstOrDefault()?.Claims.FirstOrDefault(s => s.Type == JwtRegisteredClaimNames.Name).Value;
-                userDto.UpdatedBy = claimsPrincipal?.Identities.FirstOrDefault()?.Claims.FirstOrDefault(s => s.Type == JwtRegisteredClaimNames.Name).Value;
+                userNmae = claimsPrincipal?.Identities.FirstOrDefault()?.Claims.FirstOrDefault(s => s.Type == JwtRegisteredClaimNames.Name).Value;
             }
+            return userNmae;
         }
 
     }

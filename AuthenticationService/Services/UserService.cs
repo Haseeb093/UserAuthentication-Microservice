@@ -46,12 +46,12 @@ namespace AuthenticationService
                 {
                     authClaims.Add(new Claim("Roles", userRole));
                 }
-
                 response.Data = GetToken(authClaims);
                 Helper.SetSuccessRespose(response);
             }
             return response;
         }
+
         public async Task<ResponseObject<List<Error>>> Register(UserDto userDto)
         {
             var response = new ResponseObject<List<Error>>();
@@ -93,9 +93,9 @@ namespace AuthenticationService
 
                     switch (userDto.Role)
                     {
-                        //case "Admin":
-                        //    await _userManager.AddToRoleAsync(user, UserRoles.Admin.ToString());
-                        //    break;
+                        case "Admin":
+                            await _userManager.AddToRoleAsync(user, UserRoles.Admin.ToString());
+                            break;
                         case "Doctor":
                             await _userManager.AddToRoleAsync(user, UserRoles.Doctor.ToString());
                             break;
@@ -111,6 +111,22 @@ namespace AuthenticationService
             }
             return response;
         }
+
+        public async Task<ResponseObject<List<Error>>> ChangeUserPassword(ChangePasswordDto changePasswordDto)
+        {
+            var response = new ResponseObject<List<Error>>();
+
+            if (ChangePasswordValidation(changePasswordDto, response))
+            {
+                var changeResponse = await _userManager.ChangePasswordAsync(await GetUserByName(changePasswordDto.Username), changePasswordDto.OldPassword, changePasswordDto.NewPassword);
+                if (ChangePasswordResponseValidation(changeResponse, response))
+                {
+                    Helper.SetSuccessRespose(response);
+                }
+            }
+            return response;
+        }
+
         public async Task<ResponseObject<List<CountriesDto>>> GetCountries()
         {
             var response = new ResponseObject<List<CountriesDto>>();
@@ -118,6 +134,7 @@ namespace AuthenticationService
             Helper.SetSuccessRespose(response);
             return response;
         }
+
         public async Task<ResponseObject<List<StatesDto>>> GetCountryStates(int countryId)
         {
             var response = new ResponseObject<List<StatesDto>>();
@@ -125,6 +142,7 @@ namespace AuthenticationService
             Helper.SetSuccessRespose(response);
             return response;
         }
+
         public async Task<ResponseObject<List<CitiesDto>>> GetStateCities(int stateId)
         {
             var response = new ResponseObject<List<CitiesDto>>();
@@ -132,7 +150,5 @@ namespace AuthenticationService
             Helper.SetSuccessRespose(response);
             return response;
         }
-
-
     }
 }
