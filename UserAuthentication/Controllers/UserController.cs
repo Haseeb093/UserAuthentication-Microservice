@@ -45,8 +45,27 @@ namespace UserAuthentication.UserControllers
             try
             {
                 UserDto userDto = JsonConvert.DeserializeObject<UserDto>(requestObject["data"].ToString());
-                Helper.GetUserFromToken(HttpContext.User, userDto);
+                userDto.InsertedBy = Helper.GetUserFromToken(HttpContext.User);
+                userDto.UpdatedBy = Helper.GetUserFromToken(HttpContext.User);
                 responseObj = await userService.Register(userDto);
+            }
+            catch (Exception ex)
+            {
+                Helper.SetFailuerRespose(responseObj, ex);
+            }
+            return responseObj;
+        }
+
+        [HttpPut]
+        [Route("ChangePassword")]
+        public async Task<ResponseObject<List<Error>>> ChangePassword(JObject requestObject)
+        {
+            var responseObj = new ResponseObject<List<Error>>();
+            try
+            {
+                ChangePasswordDto passwordDto = JsonConvert.DeserializeObject<ChangePasswordDto>(requestObject["data"].ToString());
+                passwordDto.Username = Helper.GetUserFromToken(HttpContext.User);
+                responseObj = await userService.ChangeUserPassword(passwordDto);
             }
             catch (Exception ex)
             {

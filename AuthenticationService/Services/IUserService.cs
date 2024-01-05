@@ -16,6 +16,7 @@ namespace Service.Services
         public Task<ResponseObject<List<StatesDto>>> GetCountryStates(int countryId);
         public Task<ResponseObject<TokenDto>> Login(LoginDto loginParam);
         public Task<ResponseObject<List<Error>>> Register(UserDto registerParam);
+        public Task<ResponseObject<List<Error>>> ChangeUserPassword(ChangePasswordDto changePasswordDto);
 
     }
 }
