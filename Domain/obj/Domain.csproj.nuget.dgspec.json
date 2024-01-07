@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\Domain\\Domain.csproj": {}
+    "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\Domain\\Domain.csproj": {
+    "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Haseeb\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Haseeb\\Desktop\\Work\\Microservices\\UserAuthentication\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\hshahid\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Haseeb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hshahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

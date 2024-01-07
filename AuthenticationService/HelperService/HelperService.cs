@@ -34,33 +34,40 @@ namespace Service.Validation
         protected async Task<bool> LoginValidation(LoginDto loginDto, ResponseObject<TokenDto> responseObject)
         {
             bool isValid = false;
-            if (loginDto != null && !string.IsNullOrEmpty(loginDto.Username) && loginDto.Username.Trim() != "")
+
+            if (loginDto != null && !string.IsNullOrEmpty(loginDto.Username) && loginDto.Username.Trim() != ""
+                                      && !string.IsNullOrEmpty(loginDto.Password) && loginDto.Password.Trim() != "")
             {
                 user = await GetUserByName(loginDto.Username);
 
-                if (user != null && !string.IsNullOrEmpty(loginDto.Password) && loginDto.Password.Trim() != "")
+                if (user != null)
                 {
-                    var login = await _signInManager.PasswordSignInAsync(loginDto.Username, loginDto.Password, false, lockoutOnFailure: true);
+                    var login = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, lockoutOnFailure: true);
 
-                    if (login.Succeeded)
+                    if (!login.Succeeded)
+                    {
+                        responseObject.Message = "User Name or Password not Matched !";
+                        Helper.SetFailuerRespose(responseObject);
+                    }
+                    else
                         isValid = true;
 
                     if (login.IsLockedOut)
                     {
-                        responseObject.Message = "User Locked Out  !";
-                        isValid = false;
+                        responseObject.Message = "User Locked Out !";
+                        Helper.SetFailuerRespose(responseObject);
                     }
                 }
+                else
+                {
+                    responseObject.Message = "User Name or Password not Matched !";
+                }
             }
-            responseObject.Message = "User Name or Password not Matched !";
-
-            if (isValid)
-                return isValid;
             else
             {
-                Helper.SetFailuerRespose(responseObject);
-                return isValid;
+                responseObject.Message = "Please Provided User Name or Password !";
             }
+            return isValid;
         }
 
         protected async Task<bool> RegisterValidation(UserDto registerParam, ResponseObject<List<Error>> response)
@@ -76,16 +83,6 @@ namespace Service.Validation
                 error.Message = "First or Last Name is Missing !";
                 response.Data.Add(error);
             }
-
-            if (string.IsNullOrEmpty(registerParam.PhoneNumber) || registerParam.PhoneNumber.Trim() == "")
-            {
-                isValid = false;
-                Error error = new Error();
-                error.Code = "PhoneNumberNotValid";
-                error.Message = "Phone Number is Missing !";
-                response.Data.Add(error);
-            }
-
 
             if (string.IsNullOrEmpty(registerParam.Username) || registerParam.Username.Trim() == "")
             {
@@ -131,19 +128,46 @@ namespace Service.Validation
                 }
             }
 
-            if (isValid)
-                return isValid;
-            else
+            if (string.IsNullOrEmpty(registerParam.PhoneNumber) || registerParam.PhoneNumber.Trim() == "")
             {
-                Helper.SetFailuerRespose(response);
-                return isValid;
+                isValid = false;
+                Error error = new Error();
+                error.Code = "PhoneNumberNotValid";
+                error.Message = "Phone Number is Missing !";
+                response.Data.Add(error);
             }
-        }
 
-        private bool ValidateEmail(string email)
-        {
-            string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov)$";
-            return Regex.IsMatch(email, regex);
+            if (registerParam.CountryId <= 0)
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "CountryIdInvalid";
+                error.Message = "Please Select Country";
+                response.Data.Add(error);
+            }
+
+            if (registerParam.StateId <= 0)
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "StateIdInvalid";
+                error.Message = "Please Select State";
+                response.Data.Add(error);
+            }
+
+            if (registerParam.CityId <= 0)
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "CityIdInvalid";
+                error.Message = "Please Select City";
+                response.Data.Add(error);
+            }
+
+            if (!isValid)
+                Helper.SetFailuerRespose(response);
+
+            return isValid;
         }
 
         protected bool RegisterResponseValidation(IdentityResult identityResult, ResponseObject<List<Error>> responseObject)
@@ -162,6 +186,42 @@ namespace Service.Validation
             else
             {
                 responseObject.Message = "User Registered Successfully";
+            }
+
+            return identityResult.Succeeded;
+        }
+
+        protected bool ChangePasswordValidation(ChangePasswordDto passwordDto, ResponseObject<List<Error>> responseObject)
+        {
+
+            if (passwordDto == null || string.IsNullOrEmpty(passwordDto.OldPassword) || passwordDto.OldPassword.Trim() == ""
+                                    || string.IsNullOrEmpty(passwordDto.NewPassword) || passwordDto.NewPassword.Trim() == "")
+            {
+                responseObject.Message = "Old or New Password Not Provided !";
+                return false;
+            }
+
+            return true;
+        }
+
+        protected bool ChangePasswordResponseValidation(IdentityResult identityResult, ResponseObject<List<Error>> responseObject)
+        {
+            responseObject.Data = new List<Error>();
+
+            if (!identityResult.Succeeded)
+            {
+                foreach (var err in identityResult.Errors)
+                {
+                    Error error = new Error();
+                    error.Code = err.Code;
+                    error.Message = err.Description;
+                    responseObject.Data.Add(error);
+                }
+                Helper.SetFailuerRespose(responseObject);
+            }
+            else
+            {
+                responseObject.Message = "Password Changed Successfully";
             }
 
             return identityResult.Succeeded;
@@ -192,5 +252,14 @@ namespace Service.Validation
                 Token = new JwtSecurityTokenHandler().WriteToken(token)
             };
         }
+
+        #region Private Method
+        private bool ValidateEmail(string email)
+        {
+            string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov)$";
+            return Regex.IsMatch(email, regex);
+        }
+
+        #endregion
     }
 }
