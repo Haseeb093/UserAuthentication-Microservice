@@ -20,13 +20,15 @@ namespace Services.ApplicationContext
             modelBuilder.Entity<IdentityUserLogin<string>>().ToTable("UserLogins");
             modelBuilder.Entity<IdentityUserToken<string>>().ToTable("UserTokens");
             modelBuilder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
-            modelBuilder.Entity<User>().Property(b => b.UpdatedDate).HasDefaultValueSql("getdate()");
-            modelBuilder.Entity<User>().Property(b => b.InsertedDate).HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<Users>().Property(b => b.UpdatedDate).HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<Users>().Property(b => b.InsertedDate).HasDefaultValueSql("getdate()");
         }
 
         public DbSet<Cities> Cities { get; set; }
         public DbSet<States> States { get; set; }
+        public DbSet<Genders> Genders { get; set; }
         public DbSet<Countries> Countries { get; set; }
+   
 
     }
 }

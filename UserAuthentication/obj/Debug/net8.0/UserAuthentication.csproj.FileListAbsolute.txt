@@ -689,13 +689,7 @@ C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication\UserAuthenticati
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.csproj.CopyComplete
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.genruntimeconfig.cache
 C:\Users\hshahid\Desktop\Work\Micro Services\UserAuthentication\UserAuthentication\obj\Debug\net8.0\ref\UserAuthentication.dll
-C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\appsettings.json
-C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\UserAuthentication.exe
-C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\UserAuthentication.deps.json
-C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\UserAuthentication.runtimeconfig.json
-C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\UserAuthentication.dll
-C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\UserAuthentication.pdb
+C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Service.dll
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\AutoMapper.dll
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Azure.Core.dll
@@ -818,7 +812,6 @@ C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debu
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Domain.dll
-C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Service.dll
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Service.pdb
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\Domain.pdb
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.csproj.AssemblyReference.cache
@@ -836,9 +829,16 @@ C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\obj\Debu
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.UserAuthentication.props
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\obj\Debug\net8.0\scopedcss\bundle\UserAuthentication.styles.css
-C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.csproj.CopyComplete
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.dll
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\obj\Debug\net8.0\refint\UserAuthentication.dll
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.pdb
+C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\appsettings.json
+C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\UserAuthentication.exe
+C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\UserAuthentication.deps.json
+C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\UserAuthentication.runtimeconfig.json
+C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\UserAuthentication.dll
+C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\bin\Debug\net8.0\UserAuthentication.pdb
+C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.csproj.CopyComplete
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.genruntimeconfig.cache
 C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\obj\Debug\net8.0\ref\UserAuthentication.dll

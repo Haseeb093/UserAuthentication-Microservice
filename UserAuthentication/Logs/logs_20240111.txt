@@ -1,0 +1,161 @@
+2024-01-11 14:39:31.769 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Specified key is not a valid size for this algorithm. 
+ Stack Trace:    at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Domain.Helper.Helper.EncryptString(String plainText) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\Domain\Helper\Helper.cs:line 54
+   at AuthenticationService.UserService.Login(LoginDto loginParam) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\Services\UserService.cs:line 39
+   at UserAuthentication.UserControllers.UserController.Login(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 31 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-11 14:39:51.917 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Specified key is not a valid size for this algorithm. 
+ Stack Trace:    at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Domain.Helper.Helper.EncryptString(String plainText) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\Domain\Helper\Helper.cs:line 54
+   at AuthenticationService.UserService.Login(LoginDto loginParam) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\Services\UserService.cs:line 39
+   at UserAuthentication.UserControllers.UserController.Login(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 31 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-11 14:42:26.999 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Specified key is not a valid size for this algorithm. 
+ Stack Trace:    at System.Security.Cryptography.SymmetricAlgorithm.set_Key(Byte[] value)
+   at Domain.Helper.Helper.EncryptString(String plainText) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\Domain\Helper\Helper.cs:line 54
+   at AuthenticationService.UserService.Login(LoginDto loginParam) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\Services\UserService.cs:line 39
+   at UserAuthentication.UserControllers.UserController.Login(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 31 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-11 17:24:53.234 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Error converting value "06081993" to type 'System.DateOnly'. Path 'DateofBirth', line 6, position 27. 
+ Stack Trace:    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType(JsonReader reader, Object value, CultureInfo culture, JsonContract contract, Type targetType)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at UserAuthentication.UserControllers.UserController.Register(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 47 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-11 17:27:08.132 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Error converting value "06081993" to type 'System.DateOnly'. Path 'DateofBirth', line 6, position 27. 
+ Stack Trace:    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType(JsonReader reader, Object value, CultureInfo culture, JsonContract contract, Type targetType)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at UserAuthentication.UserControllers.UserController.Register(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 47 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-11 17:27:14.414 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Error converting value "06081993" to type 'System.DateOnly'. Path 'DateofBirth', line 6, position 27. 
+ Stack Trace:    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType(JsonReader reader, Object value, CultureInfo culture, JsonContract contract, Type targetType)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at UserAuthentication.UserControllers.UserController.Register(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 47 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-11 17:27:38.605 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Error converting value "06-08-1993" to type 'System.DateOnly'. Path 'DateofBirth', line 6, position 29. 
+ Stack Trace:    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType(JsonReader reader, Object value, CultureInfo culture, JsonContract contract, Type targetType)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at UserAuthentication.UserControllers.UserController.Register(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 47 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-11 17:28:19.066 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Error converting value "06-08-1993" to type 'System.DateOnly'. Path 'DateofBirth', line 6, position 29. 
+ Stack Trace:    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType(JsonReader reader, Object value, CultureInfo culture, JsonContract contract, Type targetType)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at UserAuthentication.UserControllers.UserController.Register(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 47 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-11 17:30:41.338 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Error converting value "06/08/1993" to type 'System.DateOnly'. Path 'DateofBirth', line 6, position 29. 
+ Stack Trace:    at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.EnsureType(JsonReader reader, Object value, CultureInfo culture, JsonContract contract, Type targetType)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.SetPropertyValue(JsonProperty property, JsonConverter propertyConverter, JsonContainerContract containerContract, JsonProperty containerProperty, JsonReader reader, Object target)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.PopulateObject(Object newObject, JsonReader reader, JsonObjectContract contract, JsonProperty member, String id)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateObject(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.CreateValueInternal(JsonReader reader, Type objectType, JsonContract contract, JsonProperty member, JsonContainerContract containerContract, JsonProperty containerMember, Object existingValue)
+   at Newtonsoft.Json.Serialization.JsonSerializerInternalReader.Deserialize(JsonReader reader, Type objectType, Boolean checkAdditionalContent)
+   at Newtonsoft.Json.JsonSerializer.DeserializeInternal(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonSerializer.Deserialize(JsonReader reader, Type objectType)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject(String value, Type type, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value, JsonSerializerSettings settings)
+   at Newtonsoft.Json.JsonConvert.DeserializeObject[T](String value)
+   at UserAuthentication.UserControllers.UserController.Register(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 47 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-11 18:18:44.987 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Value cannot be null. (Parameter 's') 
+ Stack Trace:    at System.DateOnly.Parse(String s)
+   at Service.Validation.HelperService.RegisterValidation(UserDto registerParam, ResponseObject`1 response) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\HelperService\HelperService.cs:line 146
+   at AuthenticationService.UserService.Register(UserDto userDto) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\Services\UserService.cs:line 58
+   at UserAuthentication.UserControllers.UserController.Register(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 51 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-11 18:27:37.282 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Value cannot be null. (Parameter 's') 
+ Stack Trace:    at System.DateOnly.Parse(String s)
+   at Service.Validation.HelperService.RegisterValidation(UserDto registerParam, ResponseObject`1 response) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\HelperService\HelperService.cs:line 146
+   at AuthenticationService.UserService.Register(UserDto userDto) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\Services\UserService.cs:line 58
+   at UserAuthentication.UserControllers.UserController.Register(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 51 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-11 18:36:12.954 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Object reference not set to an instance of an object. 
+ Stack Trace:    at Service.Validation.HelperService.IdentityResponseValidation(IdentityResult identityResult, ResponseObject`1 responseObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\HelperService\HelperService.cs:line 197
+   at AuthenticationService.UserService.ChangeUserPassword(ChangePasswordDto changePasswordDto) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\Services\UserService.cs:line 122
+   at UserAuthentication.UserControllers.UserController.ChangePassword(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 69 
+ ------------------------------------------------------------------------------------------------ 
+

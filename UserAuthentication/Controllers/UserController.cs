@@ -45,8 +45,9 @@ namespace UserAuthentication.UserControllers
             try
             {
                 UserDto userDto = JsonConvert.DeserializeObject<UserDto>(requestObject["data"].ToString());
-                userDto.InsertedBy = Helper.GetUserFromToken(HttpContext.User);
-                userDto.UpdatedBy = Helper.GetUserFromToken(HttpContext.User);
+                var userName = Helper.GetUserFromToken(HttpContext.User);
+                userDto.InsertedBy = userName;
+                userDto.UpdatedBy = userName;
                 responseObj = await userService.Register(userDto);
             }
             catch (Exception ex)
