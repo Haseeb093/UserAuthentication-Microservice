@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2MBjpUdHFs7WM/A5cZHG5nhrsrcbdpWmZdCN5oF7BkxBmU744kNX8VmcVExe/9B4mi45gm+Br+OnYkkjedaOBg==",
+  "dgSpecHash": "FJerZPE+VKkc4HvEE4CTKnbxzb4Gx3TTu9VVuSkfHuREnIEbWTcO/KMQem36HUNb+kaxkYQpDjEiaqokNxRIoQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\AuthenticationService\\Service.csproj",
+  "projectFilePath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\AuthenticationService\\Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hshahid\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\hshahid\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
