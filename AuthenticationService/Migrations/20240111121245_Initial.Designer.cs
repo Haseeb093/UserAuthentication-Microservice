@@ -12,7 +12,7 @@ using Services.ApplicationContext;
 namespace Service.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240105105004_Initial")]
+    [Migration("20240111121245_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -75,6 +75,22 @@ namespace Service.Migrations
                     b.HasKey("CountryId");
 
                     b.ToTable("Countries");
+                });
+
+            modelBuilder.Entity("Domain.Models.Genders", b =>
+                {
+                    b.Property<int>("GenderId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("GenderId"));
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("GenderId");
+
+                    b.ToTable("Genders");
                 });
 
             modelBuilder.Entity("Domain.Models.States", b =>
@@ -308,7 +324,7 @@ namespace Service.Migrations
                     b.ToTable("UserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Domain.Models.User", b =>
+            modelBuilder.Entity("Domain.Models.Users", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
 
@@ -324,8 +340,14 @@ namespace Service.Migrations
                     b.Property<int>("CountryId")
                         .HasColumnType("int");
 
+                    b.Property<DateOnly>("DateofBirth")
+                        .HasColumnType("date");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("GenderId")
+                        .HasColumnType("int");
 
                     b.Property<string>("InsertedBy")
                         .HasColumnType("nvarchar(max)");
@@ -359,9 +381,11 @@ namespace Service.Migrations
 
                     b.HasIndex("CountryId");
 
+                    b.HasIndex("GenderId");
+
                     b.HasIndex("StateId");
 
-                    b.HasDiscriminator().HasValue("User");
+                    b.HasDiscriminator().HasValue("Users");
                 });
 
             modelBuilder.Entity("Domain.Models.Cities", b =>
@@ -433,31 +457,39 @@ namespace Service.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Models.User", b =>
+            modelBuilder.Entity("Domain.Models.Users", b =>
                 {
-                    b.HasOne("Domain.Models.Cities", "City")
+                    b.HasOne("Domain.Models.Cities", "Cities")
                         .WithMany()
                         .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Models.Countries", "Country")
+                    b.HasOne("Domain.Models.Countries", "Countries")
                         .WithMany()
                         .HasForeignKey("CountryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Domain.Models.States", "State")
+                    b.HasOne("Domain.Models.Genders", "Genders")
+                        .WithMany()
+                        .HasForeignKey("GenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.States", "States")
                         .WithMany()
                         .HasForeignKey("StateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("City");
+                    b.Navigation("Cities");
 
-                    b.Navigation("Country");
+                    b.Navigation("Countries");
 
-                    b.Navigation("State");
+                    b.Navigation("Genders");
+
+                    b.Navigation("States");
                 });
 #pragma warning restore 612, 618
         }

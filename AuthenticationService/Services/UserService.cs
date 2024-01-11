@@ -38,16 +38,15 @@ namespace AuthenticationService
                 var userRoles = await _userManager.GetRolesAsync(user);
                 var authClaims = new List<Claim>
                 {
-                    new Claim(JwtRegisteredClaimNames.Name, user.UserName),
+                    new Claim(JwtRegisteredClaimNames.Sid, Helper.EncryptString(user.Id)),
+                    new Claim(JwtRegisteredClaimNames.Name,Helper.EncryptString(user.UserName)),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 };
-
                 foreach (var userRole in userRoles)
                 {
                     authClaims.Add(new Claim("Roles", userRole));
                 }
                 response.Data = GetToken(authClaims);
-                Helper.SetSuccessRespose(response);
             }
             return response;
         }
@@ -58,18 +57,20 @@ namespace AuthenticationService
 
             if (await RegisterValidation(userDto, response))
             {
-                var user = new User()
+                var user = new Users()
                 {
                     FirstName = userDto.FirstName,
                     LastName = userDto.LastName,
                     UserName = userDto.Username,
                     Email = userDto.Email,
+                    GenderId = userDto.GenderId,
                     CountryId = userDto.CountryId,
                     StateId = userDto.StateId,
                     CityId = userDto.CityId,
                     PostalCode = userDto.PostalCode,
                     Address1 = userDto.Address1,
                     Address2 = userDto.Address2,
+                    DateofBirth = DateOnly.Parse(userDto.DateofBirth),
                     PhoneNumber = userDto.PhoneNumber,
                     SecondaryPhoneNumber = userDto.SecondaryPhoneNumber,
                     SecurityStamp = Guid.NewGuid().ToString(),
@@ -77,7 +78,7 @@ namespace AuthenticationService
                     UpdatedBy = userDto.UpdatedBy
                 };
 
-                if (RegisterResponseValidation(await _userManager.CreateAsync(user, userDto.Password), response))
+                if (IdentityResponseValidation(await _userManager.CreateAsync(user, userDto.Password), response))
                 {
                     if (!await _roleManager.RoleExistsAsync(UserRoles.Admin.ToString()))
                         await _roleManager.CreateAsync(new IdentityRole(UserRoles.Admin.ToString()));
@@ -106,7 +107,6 @@ namespace AuthenticationService
                             await _userManager.AddToRoleAsync(user, UserRoles.Staff.ToString());
                             break;
                     }
-                    Helper.SetSuccessRespose(response);
                 }
             }
             return response;
@@ -119,10 +119,7 @@ namespace AuthenticationService
             if (ChangePasswordValidation(changePasswordDto, response))
             {
                 var changeResponse = await _userManager.ChangePasswordAsync(await GetUserByName(changePasswordDto.Username), changePasswordDto.OldPassword, changePasswordDto.NewPassword);
-                if (ChangePasswordResponseValidation(changeResponse, response))
-                {
-                    Helper.SetSuccessRespose(response);
-                }
+                IdentityResponseValidation(changeResponse, response);
             }
             return response;
         }

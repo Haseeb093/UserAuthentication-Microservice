@@ -33,8 +33,6 @@ namespace Service.Validation
 
         protected async Task<bool> LoginValidation(LoginDto loginDto, ResponseObject<TokenDto> responseObject)
         {
-            bool isValid = false;
-
             if (loginDto != null && !string.IsNullOrEmpty(loginDto.Username) && loginDto.Username.Trim() != ""
                                       && !string.IsNullOrEmpty(loginDto.Password) && loginDto.Password.Trim() != "")
             {
@@ -46,16 +44,15 @@ namespace Service.Validation
 
                     if (!login.Succeeded)
                     {
-                        responseObject.Message = "User Name or Password not Matched !";
-                        Helper.SetFailuerRespose(responseObject);
+                        if (login.IsLockedOut)
+                            responseObject.Message = "User Locked Out !";
+                        else
+                            responseObject.Message = "User Name or Password not Matched !";
                     }
                     else
-                        isValid = true;
-
-                    if (login.IsLockedOut)
                     {
-                        responseObject.Message = "User Locked Out !";
-                        Helper.SetFailuerRespose(responseObject);
+                        Helper.SetSuccessRespose(responseObject);
+                        return true;
                     }
                 }
                 else
@@ -67,7 +64,7 @@ namespace Service.Validation
             {
                 responseObject.Message = "Please Provided User Name or Password !";
             }
-            return isValid;
+            return false;
         }
 
         protected async Task<bool> RegisterValidation(UserDto registerParam, ResponseObject<List<Error>> response)
@@ -137,6 +134,24 @@ namespace Service.Validation
                 response.Data.Add(error);
             }
 
+            if (registerParam.GenderId <= 0)
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "GenderInValid";
+                error.Message = "Please Select Gender";
+                response.Data.Add(error);
+            }
+
+            if (registerParam.DateofBirth == null || DateOnly.Parse(registerParam.DateofBirth) == default(DateOnly))
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "DateofBirthInValid";
+                error.Message = "Please Select Date of Birth";
+                response.Data.Add(error);
+            }
+
             if (registerParam.CountryId <= 0)
             {
                 isValid = false;
@@ -170,8 +185,11 @@ namespace Service.Validation
             return isValid;
         }
 
-        protected bool RegisterResponseValidation(IdentityResult identityResult, ResponseObject<List<Error>> responseObject)
+        protected bool IdentityResponseValidation(IdentityResult identityResult, ResponseObject<List<Error>> responseObject)
         {
+            if (responseObject.Data == null)
+                responseObject.Data = new List<Error>();
+
             if (!identityResult.Succeeded)
             {
                 foreach (var err in identityResult.Errors)
@@ -185,9 +203,8 @@ namespace Service.Validation
             }
             else
             {
-                responseObject.Message = "User Registered Successfully";
+                Helper.SetSuccessRespose(responseObject);
             }
-
             return identityResult.Succeeded;
         }
 
@@ -202,29 +219,6 @@ namespace Service.Validation
             }
 
             return true;
-        }
-
-        protected bool ChangePasswordResponseValidation(IdentityResult identityResult, ResponseObject<List<Error>> responseObject)
-        {
-            responseObject.Data = new List<Error>();
-
-            if (!identityResult.Succeeded)
-            {
-                foreach (var err in identityResult.Errors)
-                {
-                    Error error = new Error();
-                    error.Code = err.Code;
-                    error.Message = err.Description;
-                    responseObject.Data.Add(error);
-                }
-                Helper.SetFailuerRespose(responseObject);
-            }
-            else
-            {
-                responseObject.Message = "Password Changed Successfully";
-            }
-
-            return identityResult.Succeeded;
         }
 
         protected async Task<IdentityUser> GetUserByName(string userName)
