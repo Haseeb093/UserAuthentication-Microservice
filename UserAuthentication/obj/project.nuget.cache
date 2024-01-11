@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "zXTeLq3ETHGK2hZX29FRN5G19zXhJkw+c6WSIUaVjya8nR0btONAzZgyulJTbSZawjTKm4zncj4Ihacb85tdFA==",
+  "dgSpecHash": "5gFLpUUQEmX8Zna8kBPtn/PkHmzGzFcrIcx6lYpqRfkiAqGLK5he79JH5Hi6LuOuowZutHE5uujGqflIQJId8w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\UserAuthentication\\UserAuthentication.csproj",
+  "projectFilePath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\UserAuthentication\\UserAuthentication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hshahid\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\hshahid\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
