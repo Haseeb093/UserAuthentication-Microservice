@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\UserAuthentication\\UserAuthentication.csproj": {}
+    "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\UserAuthentication\\UserAuthentication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\AuthenticationService\\Service.csproj": {
+    "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\AuthenticationService\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\AuthenticationService\\Service.csproj",
+        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\AuthenticationService\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\AuthenticationService\\Service.csproj",
+        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\AuthenticationService\\Service.csproj",
         "packagesPath": "C:\\Users\\hshahid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\AuthenticationService\\obj\\",
+        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\AuthenticationService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hshahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\Domain\\Domain.csproj"
+              "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\Domain.csproj"
               }
             }
           }
@@ -87,14 +87,14 @@
         }
       }
     },
-    "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\Domain\\Domain.csproj": {
+    "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\hshahid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hshahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -152,14 +152,14 @@
         }
       }
     },
-    "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\UserAuthentication\\UserAuthentication.csproj": {
+    "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\UserAuthentication\\UserAuthentication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\UserAuthentication\\UserAuthentication.csproj",
+        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\UserAuthentication\\UserAuthentication.csproj",
         "projectName": "UserAuthentication",
-        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\UserAuthentication\\UserAuthentication.csproj",
+        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\UserAuthentication\\UserAuthentication.csproj",
         "packagesPath": "C:\\Users\\hshahid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\UserAuthentication\\obj\\",
+        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\UserAuthentication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hshahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -176,11 +176,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\AuthenticationService\\Service.csproj": {
-                "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\AuthenticationService\\Service.csproj"
+              "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\AuthenticationService\\Service.csproj": {
+                "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\AuthenticationService\\Service.csproj"
               },
-              "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\Domain\\Domain.csproj"
+              "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\Domain.csproj"
               }
             }
           }

@@ -1,0 +1,12 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+/ApiGateWay/bin/
+/ApiGateWay/bin/*
+/bin/*
+/obj/*
+/.vs
+/ApiGateWay/obj/Debug
+/.vs/UserAuthentication
+/ApiGateWay/obj/Debug/net8.0/ref/ApiGateWay.dll
+/ApiGateWay/obj/Debug/net8.0/ApiGateWay.AssemblyInfoInputs.cache

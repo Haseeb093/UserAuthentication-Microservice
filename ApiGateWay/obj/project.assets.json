@@ -885,11 +885,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\ApiGateWay\\ApiGateWay.csproj",
+      "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\ApiGateWay\\ApiGateWay.csproj",
       "projectName": "ApiGateWay",
-      "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\ApiGateWay\\ApiGateWay.csproj",
+      "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\ApiGateWay\\ApiGateWay.csproj",
       "packagesPath": "C:\\Users\\hshahid\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\Micro Services\\UserAuthentication\\ApiGateWay\\obj\\",
+      "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\ApiGateWay\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hshahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
