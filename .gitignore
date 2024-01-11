@@ -10,3 +10,12 @@
 /.vs/UserAuthentication
 /ApiGateWay/obj/Debug/net8.0/ref/ApiGateWay.dll
 /ApiGateWay/obj/Debug/net8.0/ApiGateWay.AssemblyInfoInputs.cache
+/Domain/bin/Debug/net8.0/Domain.dll
+/Domain/bin/Debug/net8.0/Domain.pdb
+/AuthenticationService/bin/Debug/net8.0/
+/AuthenticationService/bin/Debug/net8.0/*
+/AuthenticationService/bin/Debug/net8.0/Service.pdb
+/AuthenticationService/bin/Debug/net8.0/Service.dll
+/ApiGateWay/bin/Debug/*
+/ApiGateWay/bin/Debug
+/ApiGateWay/bin/Debug/net8.0/GateWay/Admin.json
