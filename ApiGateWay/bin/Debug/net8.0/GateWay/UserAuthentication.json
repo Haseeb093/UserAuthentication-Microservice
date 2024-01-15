@@ -25,13 +25,13 @@
           "Host": "localhost",
           "Port": 5148
         }
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer"
-      },
-      "RouteClaimsRequirement": {
-        "Roles": "Admin"
-      }
+      ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer"
+      //},
+      //"RouteClaimsRequirement": {
+      //  "Roles": "Admin"
+      //}
     },
     {
       "UpstreamPathTemplate": "/Gateway/ChangePassword",

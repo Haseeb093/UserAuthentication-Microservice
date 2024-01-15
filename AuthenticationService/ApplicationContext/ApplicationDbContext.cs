@@ -22,13 +22,16 @@ namespace Services.ApplicationContext
             modelBuilder.Entity<IdentityRoleClaim<string>>().ToTable("RoleClaims");
             modelBuilder.Entity<Users>().Property(b => b.UpdatedDate).HasDefaultValueSql("getdate()");
             modelBuilder.Entity<Users>().Property(b => b.InsertedDate).HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<Departments>().Property(b => b.UpdatedDate).HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<Departments>().Property(b => b.InsertedDate).HasDefaultValueSql("getdate()");
         }
 
         public DbSet<Cities> Cities { get; set; }
         public DbSet<States> States { get; set; }
         public DbSet<Genders> Genders { get; set; }
         public DbSet<Countries> Countries { get; set; }
-   
+        public DbSet<Departments> Departments { get; set; }
+
 
     }
 }

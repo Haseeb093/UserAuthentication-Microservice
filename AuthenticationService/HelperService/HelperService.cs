@@ -1,5 +1,6 @@
 ﻿using Azure;
 using Domain.CustomModels;
+using Domain.Enum;
 using Domain.Helper;
 using Domain.Models;
 using Microsoft.AspNetCore.Identity;
@@ -140,6 +141,15 @@ namespace Service.Validation
                 Error error = new Error();
                 error.Code = "GenderInValid";
                 error.Message = "Please Select Gender";
+                response.Data.Add(error);
+            }
+
+            if ((registerParam.Role == UserRoles.Doctor.ToString() || registerParam.Role == UserRoles.Staff.ToString()) && registerParam.DepartmentId <= 0)
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "DepartmentNotValid";
+                error.Message = "Please Select Department !";
                 response.Data.Add(error);
             }
 
