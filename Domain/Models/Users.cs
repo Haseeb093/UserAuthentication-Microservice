@@ -12,6 +12,10 @@ namespace Domain.Models
 
         [ForeignKey("GenderId")]
         public Genders Genders { get; set; }
+        public int DepartmentId { get; set; }
+
+        [ForeignKey("DepartmentId")]
+        public Departments Departments { get; set; }
         public int CountryId { get; set; }
 
         [ForeignKey("CountryId")]
