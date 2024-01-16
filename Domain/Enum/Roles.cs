@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Domain.Enum
 {
-    public enum UserRoles
+    public enum Roles
     {
         [DefaultValue("Admin")]
         Admin,
