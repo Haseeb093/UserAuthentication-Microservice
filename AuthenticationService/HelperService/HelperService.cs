@@ -1,4 +1,5 @@
-﻿using Azure;
+﻿using AutoMapper;
+using Azure;
 using Domain.CustomModels;
 using Domain.Enum;
 using Domain.Helper;
@@ -20,13 +21,15 @@ namespace Service.Validation
 {
     public class HelperService
     {
-        protected IdentityUser user = null;
+        protected Users user = null;
+        protected readonly IMapper _mapper;
         private readonly IConfiguration _configuration;
         protected readonly UserManager<IdentityUser> _userManager;
         protected readonly SignInManager<IdentityUser> _signInManager;
 
-        public HelperService(IConfiguration configuration, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public HelperService(IConfiguration configuration, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IMapper mapper)
         {
+            _mapper = mapper;
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
@@ -34,10 +37,10 @@ namespace Service.Validation
 
         protected async Task<bool> LoginValidation(LoginDto loginDto, ResponseObject<TokenDto> responseObject)
         {
-            if (loginDto != null && !string.IsNullOrEmpty(loginDto.Username) && loginDto.Username.Trim() != ""
+            if (loginDto != null && !string.IsNullOrEmpty(loginDto.UserName) && loginDto.UserName.Trim() != ""
                                       && !string.IsNullOrEmpty(loginDto.Password) && loginDto.Password.Trim() != "")
             {
-                user = await GetUserByName(loginDto.Username);
+                user = _mapper.Map<Users>(await GetUserByName(loginDto.UserName));
 
                 if (user != null)
                 {
@@ -82,7 +85,7 @@ namespace Service.Validation
                 response.Data.Add(error);
             }
 
-            if (string.IsNullOrEmpty(registerParam.Username) || registerParam.Username.Trim() == "")
+            if (string.IsNullOrEmpty(registerParam.UserName) || registerParam.UserName.Trim() == "")
             {
                 isValid = false;
                 Error error = new Error();
@@ -92,7 +95,7 @@ namespace Service.Validation
             }
             else
             {
-                var regUser = await GetUserByName(registerParam.Username);
+                var regUser = await GetUserByName(registerParam.UserName);
 
                 if (regUser != null)
                 {
@@ -144,7 +147,7 @@ namespace Service.Validation
                 response.Data.Add(error);
             }
 
-            if ((registerParam.Role == UserRoles.Doctor.ToString() || registerParam.Role == UserRoles.Staff.ToString()) && registerParam.DepartmentId <= 0)
+            if ((registerParam.Role == Roles.Doctor.ToString() || registerParam.Role == Roles.Staff.ToString()) && registerParam.DepartmentId <= 0)
             {
                 isValid = false;
                 Error error = new Error();
@@ -229,6 +232,33 @@ namespace Service.Validation
             }
 
             return true;
+        }
+
+        protected async Task<bool> LockOutValidation(LockOutUserDto lockOutUser, ResponseObject<List<Error>> responseObject)
+        {
+            if (lockOutUser != null && !string.IsNullOrEmpty(lockOutUser.UserId))
+            {
+                user = _mapper.Map<Users>(await GetUserById(Helper.DecryptString(lockOutUser.UserId)));
+
+                if (user != null)
+                {
+                    return true;
+                }
+                else
+                {
+                    responseObject.Message = "User Not Found !";
+                }
+            }
+            else
+            {
+                responseObject.Message = "Please Provided User Id !";
+            }
+            return false;
+        }
+
+        protected async Task<IdentityUser> GetUserById(string userId)
+        {
+            return await _userManager.FindByIdAsync(userId);
         }
 
         protected async Task<IdentityUser> GetUserByName(string userName)

@@ -18,13 +18,11 @@ namespace AuthenticationService
 {
     public class UserService : HelperService, IUserService
     {
-        private readonly IMapper mapper;
         private readonly ApplicationDbContext _dbContext;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserService(IConfiguration configuration, IMapper _mapper, ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager) : base(configuration, userManager, signInManager)
+        public UserService(IConfiguration configuration, IMapper mapper, ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager) : base(configuration, userManager, signInManager, mapper)
         {
-            mapper = _mapper;
             _dbContext = dbContext;
             _roleManager = roleManager;
         }
@@ -35,14 +33,14 @@ namespace AuthenticationService
 
             if (await LoginValidation(loginParam, response))
             {
-                var userRoles = await _userManager.GetRolesAsync(user);
+                var Roles = await _userManager.GetRolesAsync(user);
                 var authClaims = new List<Claim>
                 {
                     new Claim(JwtRegisteredClaimNames.Sid, Helper.EncryptString(user.Id)),
                     new Claim(JwtRegisteredClaimNames.Name,Helper.EncryptString(user.UserName)),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                 };
-                foreach (var userRole in userRoles)
+                foreach (var userRole in Roles)
                 {
                     authClaims.Add(new Claim("Roles", userRole));
                 }
@@ -51,7 +49,7 @@ namespace AuthenticationService
             return response;
         }
 
-        public async Task<ResponseObject<List<Error>>> Register(UserDto userDto)
+        public async Task<ResponseObject<List<Error>>> Register(UserDto userDto, string userName)
         {
             var response = new ResponseObject<List<Error>>();
 
@@ -61,7 +59,7 @@ namespace AuthenticationService
                 {
                     FirstName = userDto.FirstName,
                     LastName = userDto.LastName,
-                    UserName = userDto.Username,
+                    UserName = userDto.UserName,
                     Email = userDto.Email,
                     GenderId = userDto.GenderId,
                     CountryId = userDto.CountryId,
@@ -74,37 +72,37 @@ namespace AuthenticationService
                     PhoneNumber = userDto.PhoneNumber,
                     SecondaryPhoneNumber = userDto.SecondaryPhoneNumber,
                     SecurityStamp = Guid.NewGuid().ToString(),
-                    InsertedBy = userDto.InsertedBy,
-                    UpdatedBy = userDto.UpdatedBy
+                    InsertedBy = userName,
+                    UpdatedBy = userName
                 };
 
                 if (IdentityResponseValidation(await _userManager.CreateAsync(user, userDto.Password), response))
                 {
-                    if (!await _roleManager.RoleExistsAsync(UserRoles.Admin.ToString()))
-                        await _roleManager.CreateAsync(new IdentityRole(UserRoles.Admin.ToString()));
+                    if (!await _roleManager.RoleExistsAsync(Roles.Admin.ToString()))
+                        await _roleManager.CreateAsync(new IdentityRole(Roles.Admin.ToString()));
 
-                    if (!await _roleManager.RoleExistsAsync(UserRoles.Doctor.ToString()))
-                        await _roleManager.CreateAsync(new IdentityRole(UserRoles.Doctor.ToString()));
+                    if (!await _roleManager.RoleExistsAsync(Roles.Doctor.ToString()))
+                        await _roleManager.CreateAsync(new IdentityRole(Roles.Doctor.ToString()));
 
-                    if (!await _roleManager.RoleExistsAsync(UserRoles.Patient.ToString()))
-                        await _roleManager.CreateAsync(new IdentityRole(UserRoles.Patient.ToString()));
+                    if (!await _roleManager.RoleExistsAsync(Roles.Patient.ToString()))
+                        await _roleManager.CreateAsync(new IdentityRole(Roles.Patient.ToString()));
 
-                    if (!await _roleManager.RoleExistsAsync(UserRoles.Staff.ToString()))
-                        await _roleManager.CreateAsync(new IdentityRole(UserRoles.Staff.ToString()));
+                    if (!await _roleManager.RoleExistsAsync(Roles.Staff.ToString()))
+                        await _roleManager.CreateAsync(new IdentityRole(Roles.Staff.ToString()));
 
                     switch (userDto.Role)
                     {
                         case "Admin":
-                            await _userManager.AddToRoleAsync(user, UserRoles.Admin.ToString());
+                            await _userManager.AddToRoleAsync(user, Roles.Admin.ToString());
                             break;
                         case "Doctor":
-                            await _userManager.AddToRoleAsync(user, UserRoles.Doctor.ToString());
+                            await _userManager.AddToRoleAsync(user, Roles.Doctor.ToString());
                             break;
                         case "Patient":
-                            await _userManager.AddToRoleAsync(user, UserRoles.Patient.ToString());
+                            await _userManager.AddToRoleAsync(user, Roles.Patient.ToString());
                             break;
                         default:
-                            await _userManager.AddToRoleAsync(user, UserRoles.Staff.ToString());
+                            await _userManager.AddToRoleAsync(user, Roles.Staff.ToString());
                             break;
                     }
                 }
@@ -118,16 +116,70 @@ namespace AuthenticationService
 
             if (ChangePasswordValidation(changePasswordDto, response))
             {
-                var changeResponse = await _userManager.ChangePasswordAsync(await GetUserByName(changePasswordDto.Username), changePasswordDto.OldPassword, changePasswordDto.NewPassword);
+                var changeResponse = await _userManager.ChangePasswordAsync(await GetUserByName(changePasswordDto.UserName), changePasswordDto.OldPassword, changePasswordDto.NewPassword);
                 IdentityResponseValidation(changeResponse, response);
             }
+            return response;
+        }
+
+        public async Task<ResponseObject<List<Error>>> LockOutUser(LockOutUserDto lockOutUser)
+        {
+            var response = new ResponseObject<List<Error>>();
+            if (await LockOutValidation(lockOutUser, response))
+            {
+                if (IdentityResponseValidation(await _userManager.SetLockoutEndDateAsync(user, DateTime.Now.AddYears(10)), response))
+                {
+                    user.UpdatedBy = lockOutUser.UserName;
+                    await _userManager.UpdateAsync(user);
+                }
+            }
+            return response;
+        }
+
+        public async Task<ResponseObject<List<Error>>> UnlockUser(LockOutUserDto lockOutUser)
+        {
+            var response = new ResponseObject<List<Error>>();
+            if (await LockOutValidation(lockOutUser, response))
+            {
+                if (IdentityResponseValidation(await _userManager.SetLockoutEndDateAsync(user, DateTime.Now.AddMinutes(1)), response))
+                {
+                    user.UpdatedBy = lockOutUser.UserName;
+                    await _userManager.UpdateAsync(user);
+                }
+            }
+            return response;
+        }
+
+        public async Task<ResponseObject<List<UserDto>>> GetAllDoctors()
+        {
+            var response = new ResponseObject<List<UserDto>>();
+            //var ss1 = await _userManager.Users.ToListAsync();
+            //var x = from U in Users
+            //        join R in Roles on equals userRole.UserId
+            //        join role in t.Roles on userRole.RoleId equals role.Id into roles
+            //        select new
+            //        {
+            //            User = usr,
+            //            Roles = roles
+            //        };
+
+            response.Data = _mapper.Map<List<UserDto>>(await _userManager.Users.ToListAsync());
+            Helper.SetSuccessRespose(response);
+            return response;
+        }
+
+        public async Task<ResponseObject<List<UserDto>>> GetAllPatients()
+        {
+            var response = new ResponseObject<List<UserDto>>();
+            response.Data = _mapper.Map<List<UserDto>>(await _dbContext.Users.ToListAsync());
+            Helper.SetSuccessRespose(response);
             return response;
         }
 
         public async Task<ResponseObject<List<CountriesDto>>> GetCountries()
         {
             var response = new ResponseObject<List<CountriesDto>>();
-            response.Data = mapper.Map<List<CountriesDto>>(await _dbContext.Countries.ToListAsync());
+            response.Data = _mapper.Map<List<CountriesDto>>(await _dbContext.Countries.ToListAsync());
             Helper.SetSuccessRespose(response);
             return response;
         }
@@ -135,7 +187,7 @@ namespace AuthenticationService
         public async Task<ResponseObject<List<StatesDto>>> GetCountryStates(int countryId)
         {
             var response = new ResponseObject<List<StatesDto>>();
-            response.Data = mapper.Map<List<StatesDto>>(await _dbContext.States.Where(s => s.Countries.CountryId == countryId).ToListAsync());
+            response.Data = _mapper.Map<List<StatesDto>>(await _dbContext.States.Where(s => s.Countries.CountryId == countryId).ToListAsync());
             Helper.SetSuccessRespose(response);
             return response;
         }
@@ -143,9 +195,10 @@ namespace AuthenticationService
         public async Task<ResponseObject<List<CitiesDto>>> GetStateCities(int stateId)
         {
             var response = new ResponseObject<List<CitiesDto>>();
-            response.Data = mapper.Map<List<CitiesDto>>(await _dbContext.Cities.Where(s => s.States.StateId == stateId).ToListAsync());
+            response.Data = _mapper.Map<List<CitiesDto>>(await _dbContext.Cities.Where(s => s.States.StateId == stateId).ToListAsync());
             Helper.SetSuccessRespose(response);
             return response;
         }
+
     }
 }

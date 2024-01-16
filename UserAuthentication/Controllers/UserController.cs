@@ -45,10 +45,7 @@ namespace UserAuthentication.UserControllers
             try
             {
                 UserDto userDto = JsonConvert.DeserializeObject<UserDto>(requestObject["data"].ToString());
-                var userName = Helper.GetUserFromToken(HttpContext.User);
-                userDto.InsertedBy = userName;
-                userDto.UpdatedBy = userName;
-                responseObj = await userService.Register(userDto);
+                responseObj = await userService.Register(userDto, Helper.GetUserFromToken(HttpContext.User));
             }
             catch (Exception ex)
             {
@@ -65,8 +62,76 @@ namespace UserAuthentication.UserControllers
             try
             {
                 ChangePasswordDto passwordDto = JsonConvert.DeserializeObject<ChangePasswordDto>(requestObject["data"].ToString());
-                passwordDto.Username = Helper.GetUserFromToken(HttpContext.User);
+                passwordDto.UserName = Helper.GetUserFromToken(HttpContext.User);
                 responseObj = await userService.ChangeUserPassword(passwordDto);
+            }
+            catch (Exception ex)
+            {
+                Helper.SetFailuerRespose(responseObj, ex);
+            }
+            return responseObj;
+        }
+
+        [HttpPut]
+        [Route("LockOutUser")]
+        public async Task<ResponseObject<List<Error>>> LockOutUser(JObject requestObject)
+        {
+            var responseObj = new ResponseObject<List<Error>>();
+            try
+            {
+                LockOutUserDto lockOutUser = JsonConvert.DeserializeObject<LockOutUserDto>(requestObject["data"].ToString());
+                lockOutUser.UserName = Helper.GetUserFromToken(HttpContext.User);
+                responseObj = await userService.LockOutUser(lockOutUser);
+            }
+            catch (Exception ex)
+            {
+                Helper.SetFailuerRespose(responseObj, ex);
+            }
+            return responseObj;
+        }
+
+        [HttpPut]
+        [Route("UnlockUser")]
+        public async Task<ResponseObject<List<Error>>> UnlockUser(JObject requestObject)
+        {
+            var responseObj = new ResponseObject<List<Error>>();
+            try
+            {
+                LockOutUserDto lockOutUser = JsonConvert.DeserializeObject<LockOutUserDto>(requestObject["data"].ToString());
+                lockOutUser.UserName = Helper.GetUserFromToken(HttpContext.User);
+                responseObj = await userService.UnlockUser(lockOutUser);
+            }
+            catch (Exception ex)
+            {
+                Helper.SetFailuerRespose(responseObj, ex);
+            }
+            return responseObj;
+        }
+
+        [HttpGet]
+        [Route("GetAllPatients")]
+        public async Task<ResponseObject<List<UserDto>>> GetAllPatients()
+        {
+            var responseObj = new ResponseObject<List<UserDto>>();
+            try
+            {
+                responseObj = await userService.GetAllPatients();
+            }
+            catch (Exception ex)
+            {
+                Helper.SetFailuerRespose(responseObj, ex);
+            }
+            return responseObj;
+        }
+
+        [HttpGet]
+        [Route("GetAllDoctors")]
+        public async Task<ResponseObject<List<UserDto>>> GetAllDoctors()
+        {
+            var responseObj = new ResponseObject<List<UserDto>>();
+            try
+            {
+                responseObj = await userService.GetAllDoctors();
             }
             catch (Exception ex)
             {
