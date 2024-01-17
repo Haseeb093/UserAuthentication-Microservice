@@ -40,7 +40,7 @@ namespace Service.Validation
             if (loginDto != null && !string.IsNullOrEmpty(loginDto.UserName) && loginDto.UserName.Trim() != ""
                                       && !string.IsNullOrEmpty(loginDto.Password) && loginDto.Password.Trim() != "")
             {
-                user = _mapper.Map<Users>(await GetUserByName(loginDto.UserName));
+                user = await GetUserByName(loginDto.UserName) as Users;
 
                 if (user != null)
                 {
@@ -234,20 +234,16 @@ namespace Service.Validation
             return true;
         }
 
-        protected async Task<bool> LockOutValidation(LockOutUserDto lockOutUser, ResponseObject<List<Error>> responseObject)
+        protected async Task<Boolean> LockOutValidation(LockOutUserDto lockOutUser, ResponseObject<List<Error>> responseObject)
         {
             if (lockOutUser != null && !string.IsNullOrEmpty(lockOutUser.UserId))
             {
-                user = _mapper.Map<Users>(await GetUserById(Helper.DecryptString(lockOutUser.UserId)));
+                user = await GetUserById(Helper.DecryptString(lockOutUser.UserId)) as Users;
 
-                if (user != null)
-                {
-                    return true;
-                }
+                if (user == null)
+                    responseObject.Message = "User not Found !";
                 else
-                {
-                    responseObject.Message = "User Not Found !";
-                }
+                    return true;
             }
             else
             {

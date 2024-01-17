@@ -13,7 +13,6 @@ namespace Service.AutoMapperr
             CreateMap<Cities, CitiesDto>();
             CreateMap<Countries, CountriesDto>();
             CreateMap<Users, UserDto>();
-            CreateMap<IdentityUser, Users>();
         }
     }
 }

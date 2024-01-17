@@ -1,0 +1,65 @@
+2024-01-17 17:52:54.590 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Value cannot be null. (Parameter 'outer') 
+ Stack Trace:    at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+   at System.Linq.Enumerable.Join[TOuter,TInner,TKey,TResult](IEnumerable`1 outer, IEnumerable`1 inner, Func`2 outerKeySelector, Func`2 innerKeySelector, Func`3 resultSelector)
+   at AuthenticationService.UserService.GetAllDoctors() in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\Services\UserService.cs:line 168
+   at UserAuthentication.UserControllers.UserController.GetAllDoctors() in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 134 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-17 17:53:12.025 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Value cannot be null. (Parameter 'outer') 
+ Stack Trace:    at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+   at System.Linq.Enumerable.Join[TOuter,TInner,TKey,TResult](IEnumerable`1 outer, IEnumerable`1 inner, Func`2 outerKeySelector, Func`2 innerKeySelector, Func`3 resultSelector)
+   at AuthenticationService.UserService.GetAllDoctors() in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\Services\UserService.cs:line 168
+   at UserAuthentication.UserControllers.UserController.GetAllDoctors() in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 134 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-17 17:53:30.167 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Value cannot be null. (Parameter 'outer') 
+ Stack Trace:    at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+   at System.Linq.Enumerable.Join[TOuter,TInner,TKey,TResult](IEnumerable`1 outer, IEnumerable`1 inner, Func`2 outerKeySelector, Func`2 innerKeySelector, Func`3 resultSelector)
+   at AuthenticationService.UserService.GetAllDoctors() in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\Services\UserService.cs:line 168
+   at UserAuthentication.UserControllers.UserController.GetAllDoctors() in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 134 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-17 17:57:27.124 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Value cannot be null. (Parameter 'outer') 
+ Stack Trace:    at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+   at System.Linq.Enumerable.Join[TOuter,TInner,TKey,TResult](IEnumerable`1 outer, IEnumerable`1 inner, Func`2 outerKeySelector, Func`2 innerKeySelector, Func`3 resultSelector)
+   at AuthenticationService.UserService.GetAllDoctors() in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\Services\UserService.cs:line 168
+   at UserAuthentication.UserControllers.UserController.GetAllDoctors() in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 134 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-17 17:59:13.039 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Value cannot be null. (Parameter 'outer') 
+ Stack Trace:    at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+   at System.Linq.Enumerable.Join[TOuter,TInner,TKey,TResult](IEnumerable`1 outer, IEnumerable`1 inner, Func`2 outerKeySelector, Func`2 innerKeySelector, Func`3 resultSelector)
+   at AuthenticationService.UserService.GetAllDoctors() in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\Services\UserService.cs:line 168
+   at UserAuthentication.UserControllers.UserController.GetAllDoctors() in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 134 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-17 18:12:06.144 +05:00 [INF] 
+ Log Level: Error 
+ Exception: Value cannot be null. (Parameter 'outer') 
+ Stack Trace:    at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
+   at System.Linq.Enumerable.Join[TOuter,TInner,TKey,TResult](IEnumerable`1 outer, IEnumerable`1 inner, Func`2 outerKeySelector, Func`2 innerKeySelector, Func`3 resultSelector)
+   at AuthenticationService.UserService.GetAllDoctors() in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\Services\UserService.cs:line 168
+   at UserAuthentication.UserControllers.UserController.GetAllDoctors() in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 134 
+ ------------------------------------------------------------------------------------------------ 
+
+2024-01-17 18:50:24.380 +05:00 [INF] 
+ Log Level: Error 
+ Exception: The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters. 
+ Stack Trace:    at System.Convert.FromBase64CharPtr(Char* inputPtr, Int32 inputLength)
+   at System.Convert.FromBase64String(String s)
+   at Domain.Helper.Helper.DecryptString(String cipherText) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\Domain\Helper\Helper.cs:line 46
+   at Service.Validation.HelperService.LockOutValidation(LockOutUserDto lockOutUser, ResponseObject`1 responseObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\HelperService\HelperService.cs:line 241
+   at AuthenticationService.UserService.LockOutUser(LockOutUserDto lockOutUser) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\Services\UserService.cs:line 130
+   at UserAuthentication.UserControllers.UserController.LockOutUser(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 84 
+ ------------------------------------------------------------------------------------------------ 
+
