@@ -12,7 +12,9 @@ namespace Domain.CustomModels
         public string UserName { get; set; }
         public string Email { get; set; }
         public int GenderId { get; set; }
+        public string Gender { get; set; }
         public int DepartmentId { get; set; }
+        public string Department { get; set; }
         public string Password { get; set; }
         public int CountryId { get; set; }
         public string Country { get; set; }
