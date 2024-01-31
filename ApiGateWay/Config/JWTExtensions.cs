@@ -19,20 +19,28 @@ namespace ApiGateWay.Config
                          options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                      }).AddJwtBearer(options =>
                      {
-                          options.RequireHttpsMetadata = false;
-                          options.TokenValidationParameters = new TokenValidationParameters
-                          {
-                              ValidateIssuer = true,
-                              ValidateAudience = true,
-                              ValidateLifetime = true,
-                              ValidIssuer = ValidIssuer,
-                              ValidAudience= ValidAudience,
-                              ValidateIssuerSigningKey = true,
-                              IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authenticationProviderKey)),
-                          };
-                      });
-            
+                         options.RequireHttpsMetadata = false;
+                         options.TokenValidationParameters = new TokenValidationParameters
+                         {
+                             ValidateIssuer = true,
+                             ValidateAudience = true,
+                             ValidateLifetime = true,
+                             ValidIssuer = ValidIssuer,
+                             ValidAudience = ValidAudience,
+                             ValidateIssuerSigningKey = true,
+                             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authenticationProviderKey)),
+                         };
+                     });
+
             services.AddOcelot();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", builder =>
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader());
+            });
         }
     }
 }

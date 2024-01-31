@@ -13,6 +13,8 @@ builder.Services.AddEndpointsApiExplorer();
 
 var app = builder.Build();
 
+app.UseCors("AllowAll");
+
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
