@@ -15,6 +15,7 @@ namespace Service.Services
         public Task<ResponseObject<List<UserDto>>> GetAllPatients();
         public Task<ResponseObject<List<CountriesDto>>> GetCountries();
         public Task<ResponseObject<TokenDto>> Login(LoginDto loginParam);
+        public Task<ResponseObject<List<Error>>> UpdateUser(UserDto userParams);
         public Task<ResponseObject<List<CitiesDto>>> GetStateCities(int stateId);
         public Task<ResponseObject<List<StatesDto>>> GetCountryStates(int countryId);
         public Task<ResponseObject<List<Error>>> UnlockUser(LockOutUserDto lockOutUser);

@@ -55,6 +55,24 @@ namespace UserAuthentication.UserControllers
         }
 
         [HttpPut]
+        [Route("UpdateUser")]
+        public async Task<ResponseObject<List<Error>>> UpdateUser(JObject requestObject)
+        {
+            var responseObj = new ResponseObject<List<Error>>();
+            try
+            {
+                UserDto userDto = JsonConvert.DeserializeObject<UserDto>(requestObject["data"].ToString());
+                userDto.UserName = Helper.GetUserFromToken(HttpContext.User);
+                responseObj = await userService.UpdateUser(userDto);
+            }
+            catch (Exception ex)
+            {
+                Helper.SetFailuerRespose(responseObj, ex);
+            }
+            return responseObj;
+        }
+
+        [HttpPut]
         [Route("ChangePassword")]
         public async Task<ResponseObject<List<Error>>> ChangePassword(JObject requestObject)
         {

@@ -19,13 +19,10 @@ namespace AuthenticationService
 {
     public class UserService : HelperService, IUserService
     {
-        private readonly ApplicationDbContext _dbContext;
-        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserService(IConfiguration configuration, IMapper mapper, ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager) : base(configuration, userManager, signInManager, mapper)
+
+        public UserService(IConfiguration configuration, IMapper mapper, ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager) : base(configuration, userManager, roleManager, signInManager, mapper, dbContext)
         {
-            _dbContext = dbContext;
-            _roleManager = roleManager;
         }
 
         public async Task<ResponseObject<TokenDto>> Login(LoginDto loginParam)
@@ -107,6 +104,33 @@ namespace AuthenticationService
                             break;
                     }
                 }
+            }
+            return response;
+        }
+
+        public async Task<ResponseObject<List<Error>>> UpdateUser(UserDto userDto)
+        {
+            var response = new ResponseObject<List<Error>>();
+
+            if (await UpdateUserValidation(userDto, response))
+            {
+                user.FirstName = userDto.FirstName;
+                user.LastName = userDto.LastName;
+                user.UserName = userDto.UserName;
+                user.Email = userDto.Email;
+                user.GenderId = userDto.GenderId;
+                user.CountryId = userDto.CountryId;
+                user.StateId = userDto.StateId;
+                user.CityId = userDto.CityId;
+                user.PostalCode = userDto.PostalCode;
+                user.Address1 = userDto.Address1;
+                user.Address2 = userDto.Address2;
+                user.DateofBirth = DateOnly.Parse(userDto.DateofBirth);
+                user.PhoneNumber = userDto.PhoneNumber;
+                user.SecondaryPhoneNumber = userDto.SecondaryPhoneNumber;
+                user.UpdatedBy = userDto.UserName;
+
+                IdentityResponseValidation(await _userManager.UpdateAsync(user), response);
             }
             return response;
         }
