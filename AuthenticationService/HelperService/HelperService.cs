@@ -6,8 +6,10 @@ using Domain.Helper;
 using Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Services.ApplicationContext;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -24,12 +26,16 @@ namespace Service.Validation
         protected Users user = null;
         protected readonly IMapper _mapper;
         private readonly IConfiguration _configuration;
+        protected readonly ApplicationDbContext _dbContext;
+        protected readonly RoleManager<IdentityRole> _roleManager;
         protected readonly UserManager<IdentityUser> _userManager;
         protected readonly SignInManager<IdentityUser> _signInManager;
 
-        public HelperService(IConfiguration configuration, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IMapper mapper)
+        public HelperService(IConfiguration configuration, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, IMapper mapper, ApplicationDbContext dbContext)
         {
             _mapper = mapper;
+            _dbContext = dbContext;
+            _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
@@ -117,9 +123,7 @@ namespace Service.Validation
             }
             else
             {
-                var regEmail = await GetUserByEmail(registerParam.Email);
-
-                if (regEmail != null)
+                if (!await IsEmailExist(registerParam.Email))
                 {
                     isValid = false;
                     Error error = new Error();
@@ -153,6 +157,113 @@ namespace Service.Validation
                 Error error = new Error();
                 error.Code = "DepartmentNotValid";
                 error.Message = "Please Select Department !";
+                response.Data.Add(error);
+            }
+
+            if (registerParam.DateofBirth == null || DateOnly.Parse(registerParam.DateofBirth) == default(DateOnly))
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "DateofBirthInValid";
+                error.Message = "Please Select Date of Birth";
+                response.Data.Add(error);
+            }
+
+            if (registerParam.CountryId <= 0)
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "CountryIdInvalid";
+                error.Message = "Please Select Country";
+                response.Data.Add(error);
+            }
+
+            if (registerParam.StateId <= 0)
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "StateIdInvalid";
+                error.Message = "Please Select State";
+                response.Data.Add(error);
+            }
+
+            if (registerParam.CityId <= 0)
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "CityIdInvalid";
+                error.Message = "Please Select City";
+                response.Data.Add(error);
+            }
+
+            if (!isValid)
+                Helper.SetFailuerRespose(response);
+
+            return isValid;
+        }
+
+        protected async Task<bool> UpdateUserValidation(UserDto registerParam, ResponseObject<List<Error>> response)
+        {
+            bool isValid = true;
+            response.Data = new List<Error>();
+
+            if (string.IsNullOrEmpty(registerParam.FirstName) || string.IsNullOrEmpty(registerParam.LastName) || registerParam.FirstName.Trim() == "" || registerParam.LastName.Trim() == "")
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "FirstNameNotValid";
+                error.Message = "First or Last Name is Missing !";
+                response.Data.Add(error);
+            }
+
+            user = await GetUserByName(registerParam.UserName);
+
+            if (user != null)
+            {
+                if (string.IsNullOrEmpty(registerParam.Email) || registerParam.Email.Trim() == "" | !ValidateEmail(registerParam.Email))
+                {
+                    isValid = false;
+                    Error error = new Error();
+                    error.Code = "EmailNotValid";
+                    error.Message = "Enter Valid Email Address !";
+                    response.Data.Add(error);
+                }
+                else
+                {
+                    if (await IsEmailExist(registerParam.Email, user.Id))
+                    {
+                        isValid = false;
+                        Error error = new Error();
+                        error.Code = "EmailAlreadyExists";
+                        error.Message = "User Email Already Exists !";
+                        response.Data.Add(error);
+                    }
+                }
+            }
+            else
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "NotFound";
+                error.Message = "User NotFound !";
+                response.Data.Add(error);
+            }
+
+            if (string.IsNullOrEmpty(registerParam.PhoneNumber) || registerParam.PhoneNumber.Trim() == "")
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "PhoneNumberNotValid";
+                error.Message = "Phone Number is Missing !";
+                response.Data.Add(error);
+            }
+
+            if (registerParam.GenderId <= 0)
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "GenderInValid";
+                error.Message = "Please Select Gender";
                 response.Data.Add(error);
             }
 
@@ -257,14 +368,17 @@ namespace Service.Validation
             return await _userManager.FindByIdAsync(userId);
         }
 
-        protected async Task<IdentityUser> GetUserByName(string userName)
+        protected async Task<Users> GetUserByName(string userName)
         {
-            return await _userManager.FindByNameAsync(userName);
+            return await _userManager.FindByNameAsync(userName) as Users;
         }
 
-        protected async Task<IdentityUser> GetUserByEmail(string email)
+        protected async Task<bool> IsEmailExist(string email, string userId = "")
         {
-            return await _userManager.FindByEmailAsync(email);
+            if (userId == "")
+                return await _dbContext.Users.AnyAsync(s => s.Email == email);
+            else
+                return await _dbContext.Users.AnyAsync(s => s.Email == email && s.Id != userId);
         }
 
         protected TokenDto GetToken(List<Claim> authClaims)
@@ -279,6 +393,7 @@ namespace Service.Validation
             return new TokenDto()
             {
                 ValidTo = token.ValidTo,
+                Role = authClaims.Find(s => s.Type == "Roles").Value,
                 Token = new JwtSecurityTokenHandler().WriteToken(token)
             };
         }
