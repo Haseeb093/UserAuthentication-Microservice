@@ -62,7 +62,7 @@ namespace UserAuthentication.UserControllers
             try
             {
                 UserDto userDto = JsonConvert.DeserializeObject<UserDto>(requestObject["data"].ToString());
-                userDto.UserName = Helper.GetUserFromToken(HttpContext.User);
+                userDto.Id = Helper.GetUserIdFromToken(HttpContext.User);
                 responseObj = await userService.UpdateUser(userDto);
             }
             catch (Exception ex)
@@ -80,7 +80,7 @@ namespace UserAuthentication.UserControllers
             try
             {
                 ChangePasswordDto passwordDto = JsonConvert.DeserializeObject<ChangePasswordDto>(requestObject["data"].ToString());
-                passwordDto.UserName = Helper.GetUserFromToken(HttpContext.User);
+                passwordDto.UserId = Helper.GetUserIdFromToken(HttpContext.User);
                 responseObj = await userService.ChangeUserPassword(passwordDto);
             }
             catch (Exception ex)
@@ -98,7 +98,7 @@ namespace UserAuthentication.UserControllers
             try
             {
                 LockOutUserDto lockOutUser = JsonConvert.DeserializeObject<LockOutUserDto>(requestObject["data"].ToString());
-                lockOutUser.UserName = Helper.GetUserFromToken(HttpContext.User);
+                lockOutUser.UpdateByUser = Helper.GetUserFromToken(HttpContext.User);
                 responseObj = await userService.LockOutUser(lockOutUser);
             }
             catch (Exception ex)
@@ -116,7 +116,7 @@ namespace UserAuthentication.UserControllers
             try
             {
                 LockOutUserDto lockOutUser = JsonConvert.DeserializeObject<LockOutUserDto>(requestObject["data"].ToString());
-                lockOutUser.UserName = Helper.GetUserFromToken(HttpContext.User);
+                lockOutUser.UpdateByUser = Helper.GetUserFromToken(HttpContext.User);
                 responseObj = await userService.UnlockUser(lockOutUser);
             }
             catch (Exception ex)

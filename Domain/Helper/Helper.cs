@@ -94,5 +94,15 @@ namespace Domain.Helper
             return userNmae;
         }
 
+        public static string GetUserIdFromToken(ClaimsPrincipal claimsPrincipal)
+        {
+            string userId = "";
+            if (claimsPrincipal != null && claimsPrincipal.Identity.IsAuthenticated)
+            {
+                userId = DecryptString(claimsPrincipal?.Identities.FirstOrDefault()?.Claims.FirstOrDefault(s => s.Type == JwtRegisteredClaimNames.Sid).Value);
+            }
+            return userId;
+        }
+
     }
 }

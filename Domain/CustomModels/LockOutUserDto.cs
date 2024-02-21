@@ -8,7 +8,7 @@ namespace Domain.CustomModels
 {
     public class LockOutUserDto
     {
-        public string UserName { get; set; }
+        public string UpdateByUser { get; set; }
         public string UserId { get; set; }
     }
 }
