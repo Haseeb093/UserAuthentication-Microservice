@@ -19,20 +19,18 @@ namespace AuthenticationService
 {
     public class UserService : HelperService, IUserService
     {
-        private readonly ApplicationDbContext _dbContext;
-        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserService(IConfiguration configuration, IMapper mapper, ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager) : base(configuration, userManager, signInManager, mapper)
+
+        public UserService(IConfiguration configuration, IMapper mapper, ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager) : base(configuration, userManager, roleManager, signInManager, mapper, dbContext)
         {
-            _dbContext = dbContext;
-            _roleManager = roleManager;
         }
 
         public async Task<ResponseObject<TokenDto>> Login(LoginDto loginParam)
         {
             var response = new ResponseObject<TokenDto>();
+            var user = await LoginValidation(loginParam, response);
 
-            if (await LoginValidation(loginParam, response))
+            if (user != null)
             {
                 var Roles = await _userManager.GetRolesAsync(user);
                 var authClaims = new List<Claim>
@@ -50,7 +48,7 @@ namespace AuthenticationService
             return response;
         }
 
-        public async Task<ResponseObject<List<Error>>> Register(UserDto userDto, string userName)
+        public async Task<ResponseObject<List<Error>>> Register(UserDto userDto, string insertedByUser)
         {
             var response = new ResponseObject<List<Error>>();
 
@@ -73,8 +71,8 @@ namespace AuthenticationService
                     PhoneNumber = userDto.PhoneNumber,
                     SecondaryPhoneNumber = userDto.SecondaryPhoneNumber,
                     SecurityStamp = Guid.NewGuid().ToString(),
-                    InsertedBy = userName,
-                    UpdatedBy = userName
+                    InsertedBy = insertedByUser,
+                    UpdatedBy = insertedByUser
                 };
 
                 if (IdentityResponseValidation(await _userManager.CreateAsync(user, userDto.Password), response))
@@ -111,14 +109,40 @@ namespace AuthenticationService
             return response;
         }
 
+        public async Task<ResponseObject<List<Error>>> UpdateUser(UserDto userDto)
+        {
+            var response = new ResponseObject<List<Error>>();
+
+            if (await UpdateUserValidation(userDto, response))
+            {
+                var user = await GetUserById(userDto.Id);
+                user.FirstName = userDto.FirstName;
+                user.LastName = userDto.LastName;
+                user.Email = userDto.Email;
+                user.GenderId = userDto.GenderId;
+                user.CountryId = userDto.CountryId;
+                user.StateId = userDto.StateId;
+                user.CityId = userDto.CityId;
+                user.PostalCode = userDto.PostalCode;
+                user.Address1 = userDto.Address1;
+                user.Address2 = userDto.Address2;
+                user.DateofBirth = DateOnly.Parse(userDto.DateofBirth);
+                user.PhoneNumber = userDto.PhoneNumber;
+                user.SecondaryPhoneNumber = userDto.SecondaryPhoneNumber;
+                user.UpdatedBy = user.UserName;
+                user.UpdatedDate = DateTime.Now;
+                IdentityResponseValidation(await _userManager.UpdateAsync(user), response);
+            }
+            return response;
+        }
+
         public async Task<ResponseObject<List<Error>>> ChangeUserPassword(ChangePasswordDto changePasswordDto)
         {
             var response = new ResponseObject<List<Error>>();
 
             if (ChangePasswordValidation(changePasswordDto, response))
             {
-                var changeResponse = await _userManager.ChangePasswordAsync(await GetUserByName(changePasswordDto.UserName), changePasswordDto.OldPassword, changePasswordDto.NewPassword);
-                IdentityResponseValidation(changeResponse, response);
+                IdentityResponseValidation(await _userManager.ChangePasswordAsync(await GetUserById(changePasswordDto.UserId), changePasswordDto.OldPassword, changePasswordDto.NewPassword), response);
             }
             return response;
         }
@@ -126,12 +150,14 @@ namespace AuthenticationService
         public async Task<ResponseObject<List<Error>>> LockOutUser(LockOutUserDto lockOutUser)
         {
             var response = new ResponseObject<List<Error>>();
+            var user = await LockOutValidation(lockOutUser, response);
 
-            if (await LockOutValidation(lockOutUser, response))
+            if (user != null)
             {
                 if (IdentityResponseValidation(await _userManager.SetLockoutEndDateAsync(user, DateTime.Now.AddYears(10)), response))
                 {
-                    user.UpdatedBy = lockOutUser.UserName;
+                    user.UpdatedDate = DateTime.Now;
+                    user.UpdatedBy = lockOutUser.UpdateByUser;
                     await _userManager.UpdateAsync(user);
                 }
             }
@@ -141,12 +167,14 @@ namespace AuthenticationService
         public async Task<ResponseObject<List<Error>>> UnlockUser(LockOutUserDto lockOutUser)
         {
             var response = new ResponseObject<List<Error>>();
+            var user = await LockOutValidation(lockOutUser, response);
 
-            if (await LockOutValidation(lockOutUser, response))
+            if (user != null)
             {
                 if (IdentityResponseValidation(await _userManager.SetLockoutEndDateAsync(user, DateTime.Now.AddMinutes(1)), response))
                 {
-                    user.UpdatedBy = lockOutUser.UserName;
+                    user.UpdatedDate = DateTime.Now;
+                    user.UpdatedBy = lockOutUser.UpdateByUser;
                     await _userManager.UpdateAsync(user);
                 }
             }

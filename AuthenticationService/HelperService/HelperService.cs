@@ -6,8 +6,10 @@ using Domain.Helper;
 using Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using Services.ApplicationContext;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -21,26 +23,29 @@ namespace Service.Validation
 {
     public class HelperService
     {
-        protected Users user = null;
         protected readonly IMapper _mapper;
         private readonly IConfiguration _configuration;
+        protected readonly ApplicationDbContext _dbContext;
+        protected readonly RoleManager<IdentityRole> _roleManager;
         protected readonly UserManager<IdentityUser> _userManager;
         protected readonly SignInManager<IdentityUser> _signInManager;
 
-        public HelperService(IConfiguration configuration, UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IMapper mapper)
+        public HelperService(IConfiguration configuration, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, IMapper mapper, ApplicationDbContext dbContext)
         {
             _mapper = mapper;
+            _dbContext = dbContext;
+            _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
             _configuration = configuration;
         }
 
-        protected async Task<bool> LoginValidation(LoginDto loginDto, ResponseObject<TokenDto> responseObject)
+        protected async Task<Users> LoginValidation(LoginDto loginDto, ResponseObject<TokenDto> responseObject)
         {
             if (loginDto != null && !string.IsNullOrEmpty(loginDto.UserName) && loginDto.UserName.Trim() != ""
                                       && !string.IsNullOrEmpty(loginDto.Password) && loginDto.Password.Trim() != "")
             {
-                user = await GetUserByName(loginDto.UserName) as Users;
+                var user = await GetUserByName(loginDto.UserName);
 
                 if (user != null)
                 {
@@ -56,7 +61,7 @@ namespace Service.Validation
                     else
                     {
                         Helper.SetSuccessRespose(responseObject);
-                        return true;
+                        return user;
                     }
                 }
                 else
@@ -68,7 +73,7 @@ namespace Service.Validation
             {
                 responseObject.Message = "Please Provided User Name or Password !";
             }
-            return false;
+            return null;
         }
 
         protected async Task<bool> RegisterValidation(UserDto registerParam, ResponseObject<List<Error>> response)
@@ -95,9 +100,7 @@ namespace Service.Validation
             }
             else
             {
-                var regUser = await GetUserByName(registerParam.UserName);
-
-                if (regUser != null)
+                if (!await IsUserExist(registerParam.UserName))
                 {
                     isValid = false;
                     Error error = new Error();
@@ -117,9 +120,7 @@ namespace Service.Validation
             }
             else
             {
-                var regEmail = await GetUserByEmail(registerParam.Email);
-
-                if (regEmail != null)
+                if (!await IsEmailExist(registerParam.Email))
                 {
                     isValid = false;
                     Error error = new Error();
@@ -153,6 +154,100 @@ namespace Service.Validation
                 Error error = new Error();
                 error.Code = "DepartmentNotValid";
                 error.Message = "Please Select Department !";
+                response.Data.Add(error);
+            }
+
+            if (registerParam.DateofBirth == null || DateOnly.Parse(registerParam.DateofBirth) == default(DateOnly))
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "DateofBirthInValid";
+                error.Message = "Please Select Date of Birth";
+                response.Data.Add(error);
+            }
+
+            if (registerParam.CountryId <= 0)
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "CountryIdInvalid";
+                error.Message = "Please Select Country";
+                response.Data.Add(error);
+            }
+
+            if (registerParam.StateId <= 0)
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "StateIdInvalid";
+                error.Message = "Please Select State";
+                response.Data.Add(error);
+            }
+
+            if (registerParam.CityId <= 0)
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "CityIdInvalid";
+                error.Message = "Please Select City";
+                response.Data.Add(error);
+            }
+
+            if (!isValid)
+                Helper.SetFailuerRespose(response);
+
+            return isValid;
+        }
+
+        protected async Task<bool> UpdateUserValidation(UserDto registerParam, ResponseObject<List<Error>> response)
+        {
+            bool isValid = true;
+            response.Data = new List<Error>();
+
+            if (string.IsNullOrEmpty(registerParam.FirstName) || string.IsNullOrEmpty(registerParam.LastName) || registerParam.FirstName.Trim() == "" || registerParam.LastName.Trim() == "")
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "FirstNameNotValid";
+                error.Message = "First or Last Name is Missing !";
+                response.Data.Add(error);
+            }
+
+            if (string.IsNullOrEmpty(registerParam.Email) || registerParam.Email.Trim() == "" | !ValidateEmail(registerParam.Email))
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "EmailNotValid";
+                error.Message = "Enter Valid Email Address !";
+                response.Data.Add(error);
+            }
+            else
+            {
+                if (await IsEmailExist(registerParam.Email, registerParam.Id))
+                {
+                    isValid = false;
+                    Error error = new Error();
+                    error.Code = "EmailAlreadyExists";
+                    error.Message = "User Email Already Exists !";
+                    response.Data.Add(error);
+                }
+            }
+
+            if (string.IsNullOrEmpty(registerParam.PhoneNumber) || registerParam.PhoneNumber.Trim() == "")
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "PhoneNumberNotValid";
+                error.Message = "Phone Number is Missing !";
+                response.Data.Add(error);
+            }
+
+            if (registerParam.GenderId <= 0)
+            {
+                isValid = false;
+                Error error = new Error();
+                error.Code = "GenderInValid";
+                error.Message = "Please Select Gender";
                 response.Data.Add(error);
             }
 
@@ -234,37 +329,32 @@ namespace Service.Validation
             return true;
         }
 
-        protected async Task<Boolean> LockOutValidation(LockOutUserDto lockOutUser, ResponseObject<List<Error>> responseObject)
+        protected async Task<Users> LockOutValidation(LockOutUserDto lockOutUser, ResponseObject<List<Error>> responseObject)
         {
             if (lockOutUser != null && !string.IsNullOrEmpty(lockOutUser.UserId))
             {
-                user = await GetUserById(Helper.DecryptString(lockOutUser.UserId)) as Users;
+                var user = await GetUserById(Helper.DecryptString(lockOutUser.UserId));
 
                 if (user == null)
                     responseObject.Message = "User not Found !";
                 else
-                    return true;
+                    return user;
             }
             else
             {
                 responseObject.Message = "Please Provided User Id !";
             }
-            return false;
+            return null;
         }
 
-        protected async Task<IdentityUser> GetUserById(string userId)
+        protected async Task<Users> GetUserById(string userId)
         {
-            return await _userManager.FindByIdAsync(userId);
+            return await _userManager.FindByIdAsync(userId) as Users;
         }
 
-        protected async Task<IdentityUser> GetUserByName(string userName)
+        protected async Task<Users> GetUserByName(string userName)
         {
-            return await _userManager.FindByNameAsync(userName);
-        }
-
-        protected async Task<IdentityUser> GetUserByEmail(string email)
-        {
-            return await _userManager.FindByEmailAsync(email);
+            return await _userManager.FindByNameAsync(userName) as Users;
         }
 
         protected TokenDto GetToken(List<Claim> authClaims)
@@ -279,6 +369,7 @@ namespace Service.Validation
             return new TokenDto()
             {
                 ValidTo = token.ValidTo,
+                Role = authClaims.Find(s => s.Type == "Roles").Value,
                 Token = new JwtSecurityTokenHandler().WriteToken(token)
             };
         }
@@ -288,6 +379,18 @@ namespace Service.Validation
         {
             string regex = @"^[^@\s]+@[^@\s]+\.(com|net|org|gov)$";
             return Regex.IsMatch(email, regex);
+        }
+        private async Task<bool> IsUserExist(string userName)
+        {
+            return await _dbContext.Users.AnyAsync(s => s.UserName == userName);
+        }
+
+        private async Task<bool> IsEmailExist(string email, string userId = "")
+        {
+            if (userId == "")
+                return await _dbContext.Users.AnyAsync(s => s.Email == email);
+            else
+                return await _dbContext.Users.AnyAsync(s => s.Email == email && s.Id != userId);
         }
 
         #endregion

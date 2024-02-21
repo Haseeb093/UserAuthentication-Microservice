@@ -55,6 +55,24 @@ namespace UserAuthentication.UserControllers
         }
 
         [HttpPut]
+        [Route("UpdateUser")]
+        public async Task<ResponseObject<List<Error>>> UpdateUser(JObject requestObject)
+        {
+            var responseObj = new ResponseObject<List<Error>>();
+            try
+            {
+                UserDto userDto = JsonConvert.DeserializeObject<UserDto>(requestObject["data"].ToString());
+                userDto.Id = Helper.GetUserIdFromToken(HttpContext.User);
+                responseObj = await userService.UpdateUser(userDto);
+            }
+            catch (Exception ex)
+            {
+                Helper.SetFailuerRespose(responseObj, ex);
+            }
+            return responseObj;
+        }
+
+        [HttpPut]
         [Route("ChangePassword")]
         public async Task<ResponseObject<List<Error>>> ChangePassword(JObject requestObject)
         {
@@ -62,7 +80,7 @@ namespace UserAuthentication.UserControllers
             try
             {
                 ChangePasswordDto passwordDto = JsonConvert.DeserializeObject<ChangePasswordDto>(requestObject["data"].ToString());
-                passwordDto.UserName = Helper.GetUserFromToken(HttpContext.User);
+                passwordDto.UserId = Helper.GetUserIdFromToken(HttpContext.User);
                 responseObj = await userService.ChangeUserPassword(passwordDto);
             }
             catch (Exception ex)
@@ -80,7 +98,7 @@ namespace UserAuthentication.UserControllers
             try
             {
                 LockOutUserDto lockOutUser = JsonConvert.DeserializeObject<LockOutUserDto>(requestObject["data"].ToString());
-                lockOutUser.UserName = Helper.GetUserFromToken(HttpContext.User);
+                lockOutUser.UpdateByUser = Helper.GetUserFromToken(HttpContext.User);
                 responseObj = await userService.LockOutUser(lockOutUser);
             }
             catch (Exception ex)
@@ -98,7 +116,7 @@ namespace UserAuthentication.UserControllers
             try
             {
                 LockOutUserDto lockOutUser = JsonConvert.DeserializeObject<LockOutUserDto>(requestObject["data"].ToString());
-                lockOutUser.UserName = Helper.GetUserFromToken(HttpContext.User);
+                lockOutUser.UpdateByUser = Helper.GetUserFromToken(HttpContext.User);
                 responseObj = await userService.UnlockUser(lockOutUser);
             }
             catch (Exception ex)
