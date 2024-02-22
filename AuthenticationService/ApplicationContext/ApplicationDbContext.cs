@@ -24,6 +24,10 @@ namespace Services.ApplicationContext
             modelBuilder.Entity<Users>().Property(b => b.InsertedDate).HasDefaultValueSql("getdate()");
             modelBuilder.Entity<Departments>().Property(b => b.UpdatedDate).HasDefaultValueSql("getdate()");
             modelBuilder.Entity<Departments>().Property(b => b.InsertedDate).HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<Rooms>().Property(b => b.UpdatedDate).HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<Rooms>().Property(b => b.InsertedDate).HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<RoomTypes>().Property(b => b.UpdatedDate).HasDefaultValueSql("getdate()");
+            modelBuilder.Entity<RoomTypes>().Property(b => b.InsertedDate).HasDefaultValueSql("getdate()");
         }
 
         public DbSet<Cities> Cities { get; set; }
@@ -31,6 +35,9 @@ namespace Services.ApplicationContext
         public DbSet<Genders> Genders { get; set; }
         public DbSet<Countries> Countries { get; set; }
         public DbSet<Departments> Departments { get; set; }
+        public DbSet<Rooms> Rooms { get; set; }
+        public DbSet<RoomTypes> RoomTypes { get; set; }
+        public DbSet<Floors> Floors { get; set; }
 
 
     }
