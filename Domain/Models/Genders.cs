@@ -12,6 +12,8 @@ namespace Domain.Models
     {
         [Key]
         public int GenderId { get; set; }
+
+        [StringLength(10)]
         public string Name { get; set; }
 
     }

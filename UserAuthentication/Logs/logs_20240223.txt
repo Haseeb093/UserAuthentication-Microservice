@@ -1,0 +1,14 @@
+2024-02-23 15:19:29.315 +05:00 [INF] 
+ Log Level: Error 
+ Exception: An exception has been raised that is likely due to a transient failure. Consider enabling transient error resiliency by adding 'EnableRetryOnFailure' to the 'UseSqlServer' call. 
+ Stack Trace:    at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleOrDefaultAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.FindByNameAsync(String userName)
+   at Service.Validation.HelperService.GetUserByName(String userName) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\HelperService\HelperService.cs:line 357
+   at Service.Validation.HelperService.LoginValidation(LoginDto loginDto, ResponseObject`1 responseObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\HelperService\HelperService.cs:line 48
+   at AuthenticationService.UserService.Login(LoginDto loginParam) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\AuthenticationService\Services\UserService.cs:line 31
+   at UserAuthentication.UserControllers.UserController.Login(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 31 
+ ------------------------------------------------------------------------------------------------ 
+

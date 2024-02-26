@@ -11,6 +11,8 @@ namespace Domain.Models
     {
         [Key]
         public int FloorId { get; set; }
+
+        [StringLength(20)]
         public string Name { get; set; }
   
     }
