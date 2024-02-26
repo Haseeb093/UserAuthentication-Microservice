@@ -8,12 +8,15 @@ namespace Domain.Models
     {
         [Key]
         public int CountryId { get; set; }
-        [Column(TypeName = "char")]
+
         [StringLength(2)]
-        public string IsoCode { get; set; }
         [Column(TypeName = "char")]
+        public string IsoCode { get; set; }
+
         [StringLength(3)]
+        [Column(TypeName = "char")]
         public string Code { get; set; }
+
         [StringLength(80)]
         public string Name { get; set; }
         public int? NumCode { get; set; }

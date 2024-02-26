@@ -19,10 +19,11 @@ namespace AuthenticationService
 {
     public class UserService : HelperService, IUserService
     {
-
+        protected readonly ApplicationDbContext _dbContext1;
 
         public UserService(IConfiguration configuration, IMapper mapper, ApplicationDbContext dbContext, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager) : base(configuration, userManager, roleManager, signInManager, mapper, dbContext)
         {
+            _dbContext1=dbContext;
         }
 
         public async Task<ResponseObject<TokenDto>> Login(LoginDto loginParam)
@@ -67,7 +68,7 @@ namespace AuthenticationService
                     PostalCode = userDto.PostalCode,
                     Address1 = userDto.Address1,
                     Address2 = userDto.Address2,
-                    DateofBirth = DateOnly.Parse(userDto.DateofBirth),
+                    DateofBirth = DateTime.Parse(userDto.DateofBirth),
                     PhoneNumber = userDto.PhoneNumber,
                     SecondaryPhoneNumber = userDto.SecondaryPhoneNumber,
                     SecurityStamp = Guid.NewGuid().ToString(),
@@ -126,7 +127,7 @@ namespace AuthenticationService
                 user.PostalCode = userDto.PostalCode;
                 user.Address1 = userDto.Address1;
                 user.Address2 = userDto.Address2;
-                user.DateofBirth = DateOnly.Parse(userDto.DateofBirth);
+                user.DateofBirth = DateTime.Parse(userDto.DateofBirth);
                 user.PhoneNumber = userDto.PhoneNumber;
                 user.SecondaryPhoneNumber = userDto.SecondaryPhoneNumber;
                 user.UpdatedBy = user.UserName;

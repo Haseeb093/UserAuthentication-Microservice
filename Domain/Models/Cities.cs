@@ -7,8 +7,11 @@ namespace Domain.Models
     {
         [Key]
         public int CityId { get; set; }
+
         [ForeignKey("StateId")]
         public States States { get; set; }
+
+        [StringLength(80)]
         public string Name { get; set; }
     }
 }
