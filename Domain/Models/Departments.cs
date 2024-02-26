@@ -11,6 +11,8 @@ namespace Domain.Models
     {
         [Key]
         public int DepartmentId { get; set; }
+
+        [StringLength(20)]
         public string  Name { get; set; }
         public string InsertedBy { get; set; }
         public string UpdatedBy { get; set; }
