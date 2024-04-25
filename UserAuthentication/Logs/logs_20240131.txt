@@ -1,6 +1,0 @@
-2024-01-31 17:01:12.589 +05:00 [INF] 
- Log Level: Error 
- Exception: Object reference not set to an instance of an object. 
- Stack Trace:    at UserAuthentication.UserControllers.UserController.Login(JObject requestObject) in C:\Users\hshahid\Desktop\Work\HMS\UserAuthentication\UserAuthentication\Controllers\UserController.cs:line 30 
- ------------------------------------------------------------------------------------------------ 
-
