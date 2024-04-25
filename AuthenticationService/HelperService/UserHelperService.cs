@@ -1,38 +1,30 @@
 ﻿using AutoMapper;
-using Azure;
 using Domain.CustomModels;
 using Domain.Enum;
 using Domain.Helper;
 using Domain.Models;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Services.ApplicationContext;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Service.Validation
 {
-    public class HelperService
+    public class UserHelperService
     {
-        protected readonly IMapper _mapper;
         private readonly IConfiguration _configuration;
         protected readonly ApplicationDbContext _dbContext;
         protected readonly RoleManager<IdentityRole> _roleManager;
         protected readonly UserManager<IdentityUser> _userManager;
         protected readonly SignInManager<IdentityUser> _signInManager;
 
-        public HelperService(IConfiguration configuration, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, IMapper mapper, ApplicationDbContext dbContext)
+        public UserHelperService(IConfiguration configuration, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager, ApplicationDbContext dbContext)
         {
-            _mapper = mapper;
             _dbContext = dbContext;
             _roleManager = roleManager;
             _userManager = userManager;

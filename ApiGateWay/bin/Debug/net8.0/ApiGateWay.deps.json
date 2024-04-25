@@ -8,9 +8,9 @@
     ".NETCoreApp,Version=v8.0": {
       "ApiGateWay/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.2",
-          "Microsoft.AspNetCore.OpenApi": "8.0.2",
-          "Ocelot": "23.0.0"
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.4",
+          "Microsoft.AspNetCore.OpenApi": "8.0.4",
+          "Ocelot": "23.2.2"
         },
         "runtime": {
           "ApiGateWay.dll": {}
@@ -32,14 +32,14 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.2": {
+      "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.4": {
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "7.1.2"
         },
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
-            "assemblyVersion": "8.0.2.0",
-            "fileVersion": "8.0.224.6804"
+            "assemblyVersion": "8.0.4.0",
+            "fileVersion": "8.0.424.17014"
           }
         }
       },
@@ -79,14 +79,14 @@
           }
         }
       },
-      "Microsoft.AspNetCore.OpenApi/8.0.2": {
+      "Microsoft.AspNetCore.OpenApi/8.0.4": {
         "dependencies": {
           "Microsoft.OpenApi": "1.4.3"
         },
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.OpenApi.dll": {
-            "assemblyVersion": "8.0.2.0",
-            "fileVersion": "8.0.224.6804"
+            "assemblyVersion": "8.0.4.0",
+            "fileVersion": "8.0.424.17014"
           }
         }
       },
@@ -195,7 +195,7 @@
           }
         }
       },
-      "Ocelot/23.0.0": {
+      "Ocelot/23.2.2": {
         "dependencies": {
           "FluentValidation": "11.8.0",
           "IPAddressRange": "6.0.0",
@@ -205,8 +205,8 @@
         },
         "runtime": {
           "lib/net8.0/Ocelot.dll": {
-            "assemblyVersion": "23.0.0.0",
-            "fileVersion": "23.0.0.0"
+            "assemblyVersion": "23.2.2.0",
+            "fileVersion": "23.2.2.0"
           }
         }
       },
@@ -245,12 +245,12 @@
       "path": "ipaddressrange/6.0.0",
       "hashPath": "ipaddressrange.6.0.0.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.2": {
+    "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7qJkk5k5jabATZZrMIQgpUB9yjDNAAApSqw+8d0FEyK1AJ4j+wv1qOMl2byUr837xbK+MjehtPnQ32yZ5Gtzlw==",
-      "path": "microsoft.aspnetcore.authentication.jwtbearer/8.0.2",
-      "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.8.0.2.nupkg.sha512"
+      "sha512": "sha512-tHnHRBgQyiVNZJ8PksNinLdGOsE8+tFFv3E9QEtmwO+iyTHRvg4bJ4X0XZG1u9KxXMTJuAdeIWKWYr2rTLEHqQ==",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/8.0.4",
+      "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.8.0.4.nupkg.sha512"
     },
     "Microsoft.AspNetCore.JsonPatch/8.0.0": {
       "type": "package",
@@ -273,12 +273,12 @@
       "path": "microsoft.aspnetcore.mvc.newtonsoftjson/8.0.0",
       "hashPath": "microsoft.aspnetcore.mvc.newtonsoftjson.8.0.0.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.OpenApi/8.0.2": {
+    "Microsoft.AspNetCore.OpenApi/8.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-59xQBsH+2at3+rrLazCNbaLhS1gmMY2fT1rSxa116EQ2oCbdULerytaYtr0h5iew+BVwJZNsWgvU3fOpt74DCA==",
-      "path": "microsoft.aspnetcore.openapi/8.0.2",
-      "hashPath": "microsoft.aspnetcore.openapi.8.0.2.nupkg.sha512"
+      "sha512": "sha512-TFiXbP0tqRgJKcpiCSSp79q6QaiF8gqRhZgrU48FQajhVkiwHSp1O1b1hkYC4Ehl4clbk3pHwdfwN9mRtDAFbQ==",
+      "path": "microsoft.aspnetcore.openapi/8.0.4",
+      "hashPath": "microsoft.aspnetcore.openapi.8.0.4.nupkg.sha512"
     },
     "Microsoft.CSharp/4.7.0": {
       "type": "package",
@@ -364,12 +364,12 @@
       "path": "newtonsoft.json.bson/1.0.2",
       "hashPath": "newtonsoft.json.bson.1.0.2.nupkg.sha512"
     },
-    "Ocelot/23.0.0": {
+    "Ocelot/23.2.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-L05CS+1NpFm3lexocQGNYmLZrIqkUjvZczakQsbHhay8DI2mvv5KvrDzqJsePyFuUxw1esVYV11MV4XFD4kGgA==",
-      "path": "ocelot/23.0.0",
-      "hashPath": "ocelot.23.0.0.nupkg.sha512"
+      "sha512": "sha512-izv+UM9zqiDpt3HzjGW8G7uZ9huSo7xIAgyAkfKYQ3Zs/Dg1PzQVRB++0vuKVko5fjml1QzqY8GHNebJN3nGaA==",
+      "path": "ocelot/23.2.2",
+      "hashPath": "ocelot.23.2.2.nupkg.sha512"
     },
     "System.Diagnostics.DiagnosticSource/4.7.1": {
       "type": "package",

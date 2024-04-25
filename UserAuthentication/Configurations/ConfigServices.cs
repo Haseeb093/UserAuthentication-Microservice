@@ -1,16 +1,12 @@
 ﻿using AuthenticationService;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Service.Interfaces;
 using Service.Services;
-using Services.ApplicationContext;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using Services.ApplicationContext;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace UserAuthentication.ConfigServices
 {
@@ -54,6 +50,7 @@ namespace UserAuthentication.ConfigServices
                 options.Lockout.MaxFailedAccessAttempts = 3;
             });
 
+            services.AddScoped<IDataService, DataService>();
             services.AddScoped<IUserService, UserService>();
             services.AddControllers();
             services.AddEndpointsApiExplorer();

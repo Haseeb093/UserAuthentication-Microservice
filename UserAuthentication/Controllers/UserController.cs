@@ -2,10 +2,10 @@
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using Domain.Helper;
-using Service.Services;
 using Domain.CustomModels;
 using Domain.Models;
 using System.IdentityModel.Tokens.Jwt;
+using Service.Interfaces;
 
 namespace UserAuthentication.UserControllers
 {
@@ -118,88 +118,6 @@ namespace UserAuthentication.UserControllers
                 LockOutUserDto lockOutUser = JsonConvert.DeserializeObject<LockOutUserDto>(requestObject["data"].ToString());
                 lockOutUser.UpdateByUser = Helper.GetUserFromToken(HttpContext.User);
                 responseObj = await userService.UnlockUser(lockOutUser);
-            }
-            catch (Exception ex)
-            {
-                Helper.SetFailuerRespose(responseObj, ex);
-            }
-            return responseObj;
-        }
-
-        [HttpGet]
-        [Route("GetAllPatients")]
-        public async Task<ResponseObject<List<UserDto>>> GetAllPatients()
-        {
-            var responseObj = new ResponseObject<List<UserDto>>();
-            try
-            {
-                responseObj = await userService.GetAllPatients();
-            }
-            catch (Exception ex)
-            {
-                Helper.SetFailuerRespose(responseObj, ex);
-            }
-            return responseObj;
-        }
-
-        [HttpGet]
-        [Route("GetAllDoctors")]
-        public async Task<ResponseObject<List<UserDto>>> GetAllDoctors()
-        {
-            var responseObj = new ResponseObject<List<UserDto>>();
-            try
-            {
-                responseObj = await userService.GetAllDoctors();
-            }
-            catch (Exception ex)
-            {
-                Helper.SetFailuerRespose(responseObj, ex);
-            }
-            return responseObj;
-        }
-
-        [HttpGet]
-        [Route("GetCountries")]
-        public async Task<ResponseObject<List<CountriesDto>>> GetCountries()
-        {
-            var responseObj = new ResponseObject<List<CountriesDto>>();
-            try
-            {
-                responseObj = await userService.GetCountries();
-            }
-            catch (Exception ex)
-            {
-                Helper.SetFailuerRespose(responseObj, ex);
-            }
-            return responseObj;
-        }
-
-        [HttpGet]
-        [Route("GetStates")]
-        public async Task<ResponseObject<List<StatesDto>>> GetStates(JObject requestObject)
-        {
-            var responseObj = new ResponseObject<List<StatesDto>>();
-            try
-            {
-                int countryId = JsonConvert.DeserializeObject<int>(requestObject["data"]["countryId"].ToString());
-                responseObj = await userService.GetCountryStates(countryId);
-            }
-            catch (Exception ex)
-            {
-                Helper.SetFailuerRespose(responseObj, ex);
-            }
-            return responseObj;
-        }
-
-        [HttpGet]
-        [Route("GetCities")]
-        public async Task<ResponseObject<List<CitiesDto>>> GetCities(JObject requestObject)
-        {
-            var responseObj = new ResponseObject<List<CitiesDto>>();
-            try
-            {
-                int stateId = JsonConvert.DeserializeObject<int>(requestObject["data"]["stateId"].ToString());
-                responseObj = await userService.GetStateCities(stateId);
             }
             catch (Exception ex)
             {

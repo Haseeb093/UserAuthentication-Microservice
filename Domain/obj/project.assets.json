@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     "net8.0": {
-      "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.2": {
+      "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.4": {
         "type": "package",
         "dependencies": {
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "7.1.2"
@@ -585,10 +585,10 @@
     }
   },
   "libraries": {
-    "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.2": {
-      "sha512": "7qJkk5k5jabATZZrMIQgpUB9yjDNAAApSqw+8d0FEyK1AJ4j+wv1qOMl2byUr837xbK+MjehtPnQ32yZ5Gtzlw==",
+    "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.4": {
+      "sha512": "tHnHRBgQyiVNZJ8PksNinLdGOsE8+tFFv3E9QEtmwO+iyTHRvg4bJ4X0XZG1u9KxXMTJuAdeIWKWYr2rTLEHqQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.authentication.jwtbearer/8.0.2",
+      "path": "microsoft.aspnetcore.authentication.jwtbearer/8.0.4",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -596,7 +596,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
         "lib/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
-        "microsoft.aspnetcore.authentication.jwtbearer.8.0.2.nupkg.sha512",
+        "microsoft.aspnetcore.authentication.jwtbearer.8.0.4.nupkg.sha512",
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
       ]
     },
@@ -1559,7 +1559,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.2",
+      "Microsoft.AspNetCore.Authentication.JwtBearer >= 8.0.4",
       "Serilog.AspNetCore >= 8.0.1"
     ]
   },
@@ -1569,11 +1569,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\Domain.csproj",
+      "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\hshahid\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\obj\\",
+      "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\hshahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1604,7 +1604,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
-            "version": "[8.0.2, )"
+            "version": "[8.0.4, )"
           },
           "Serilog.AspNetCore": {
             "target": "Package",

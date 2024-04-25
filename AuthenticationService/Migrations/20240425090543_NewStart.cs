@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Service.Migrations
 {
     /// <inheritdoc />
-    public partial class TablesAdded : Migration
+    public partial class NewStart : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

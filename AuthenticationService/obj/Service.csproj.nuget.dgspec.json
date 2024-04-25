@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\AuthenticationService\\Service.csproj": {}
+    "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\AuthenticationService\\Service.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\AuthenticationService\\Service.csproj": {
+    "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\AuthenticationService\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\AuthenticationService\\Service.csproj",
+        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\AuthenticationService\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\AuthenticationService\\Service.csproj",
+        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\AuthenticationService\\Service.csproj",
         "packagesPath": "C:\\Users\\hshahid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\AuthenticationService\\obj\\",
+        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\AuthenticationService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hshahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\Domain.csproj"
+              "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\Domain.csproj"
               }
             }
           }
@@ -46,31 +46,31 @@
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
-              "version": "[12.0.1, )"
+              "version": "[13.0.1, )"
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.4, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.4, )"
             }
           },
           "imports": [
@@ -93,14 +93,14 @@
         }
       }
     },
-    "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\Domain.csproj": {
+    "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\hshahid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\UserAuthentication\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hshahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -131,7 +131,7 @@
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.4, )"
             },
             "Serilog.AspNetCore": {
               "target": "Package",
