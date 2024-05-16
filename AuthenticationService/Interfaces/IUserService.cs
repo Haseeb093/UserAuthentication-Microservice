@@ -16,6 +16,7 @@ namespace Service.Interfaces
         public Task<ResponseObject<List<Error>>> UnlockUser(LockOutUserDto lockOutUser);
         public Task<ResponseObject<List<Error>>> LockOutUser(LockOutUserDto lockOutUser);
         public Task<ResponseObject<List<Error>>> Register(UserDto registerParam, string userName);
+        public Task<ResponseObject<List<Error>>> RegisterPatient(UserDto registerParam);
         public Task<ResponseObject<List<Error>>> ChangeUserPassword(ChangePasswordDto changePasswordDto);
 
     }

@@ -107,6 +107,47 @@ namespace AuthenticationService
             return response;
         }
 
+        public async Task<ResponseObject<List<Error>>> RegisterPatient(UserDto userDto)
+        {
+            var response = new ResponseObject<List<Error>>();
+
+            if (await RegisterValidation(userDto, response, true))
+            {
+                var user = new Users()
+                {
+                    FirstName = userDto.FirstName,
+                    LastName = userDto.LastName,
+                    UserName = userDto.UserName,
+                    Email = userDto.Email,
+                    GenderId = userDto.GenderId,
+                    DateofBirth = DateTime.Parse(userDto.DateofBirth),
+                    PhoneNumber = userDto.PhoneNumber,
+                    SecondaryPhoneNumber = userDto.SecondaryPhoneNumber,
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    InsertedBy = "Self",
+                    UpdatedBy = "Self"
+                };
+
+                if (IdentityResponseValidation(await _userManager.CreateAsync(user, userDto.Password), response))
+                {
+                    if (!await _roleManager.RoleExistsAsync(Roles.Admin.ToString()))
+                        await _roleManager.CreateAsync(new IdentityRole(Roles.Admin.ToString()));
+
+                    if (!await _roleManager.RoleExistsAsync(Roles.Doctor.ToString()))
+                        await _roleManager.CreateAsync(new IdentityRole(Roles.Doctor.ToString()));
+
+                    if (!await _roleManager.RoleExistsAsync(Roles.Patient.ToString()))
+                        await _roleManager.CreateAsync(new IdentityRole(Roles.Patient.ToString()));
+
+                    if (!await _roleManager.RoleExistsAsync(Roles.Staff.ToString()))
+                        await _roleManager.CreateAsync(new IdentityRole(Roles.Staff.ToString()));
+
+                    await _userManager.AddToRoleAsync(user, Roles.Patient.ToString());
+                }
+            }
+            return response;
+        }
+
         public async Task<ResponseObject<List<Error>>> UpdateUser(UserDto userDto)
         {
             var response = new ResponseObject<List<Error>>();
@@ -179,6 +220,6 @@ namespace AuthenticationService
             return response;
         }
 
-
+    
     }
 }

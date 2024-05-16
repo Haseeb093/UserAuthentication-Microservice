@@ -34,6 +34,18 @@
       }
     },
     {
+      "UpstreamPathTemplate": "/Gateway/RegisterPatient",
+      "UpstreamHttpMethod": [ "Post" ],
+      "DownstreamPathTemplate": "/api/RegisterPatient",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5148
+        }
+      ]
+    },
+    {
       "UpstreamPathTemplate": "/Gateway/UpdateUser",
       "UpstreamHttpMethod": [ "Put" ],
       "DownstreamPathTemplate": "/api/UpdateUser",
