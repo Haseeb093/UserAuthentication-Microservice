@@ -54,6 +54,23 @@ namespace UserAuthentication.UserControllers
             return responseObj;
         }
 
+        [HttpPost]
+        [Route("RegisterPatient")]
+        public async Task<ResponseObject<List<Error>>> RegisterPatient(JObject requestObject)
+        {
+            var responseObj = new ResponseObject<List<Error>>();
+            try
+            {
+                UserDto userDto = JsonConvert.DeserializeObject<UserDto>(requestObject["data"].ToString());
+                responseObj = await userService.RegisterPatient(userDto);
+            }
+            catch (Exception ex)
+            {
+                Helper.SetFailuerRespose(responseObj, ex);
+            }
+            return responseObj;
+        }
+
         [HttpPut]
         [Route("UpdateUser")]
         public async Task<ResponseObject<List<Error>>> UpdateUser(JObject requestObject)
@@ -63,6 +80,7 @@ namespace UserAuthentication.UserControllers
             {
                 UserDto userDto = JsonConvert.DeserializeObject<UserDto>(requestObject["data"].ToString());
                 userDto.Id = Helper.GetUserIdFromToken(HttpContext.User);
+                userDto.Role = Helper.GetUserRoleFromToken(HttpContext.User);
                 responseObj = await userService.UpdateUser(userDto);
             }
             catch (Exception ex)

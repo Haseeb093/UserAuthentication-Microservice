@@ -104,5 +104,15 @@ namespace Domain.Helper
             return userId;
         }
 
+        public static string GetUserRoleFromToken(ClaimsPrincipal claimsPrincipal)
+        {
+            string userId = "";
+            if (claimsPrincipal != null && claimsPrincipal.Identity.IsAuthenticated)
+            {
+                userId = claimsPrincipal?.Identities.FirstOrDefault()?.Claims.FirstOrDefault(s => s.Type == "Roles").Value;
+            }
+            return userId;
+        }
+
     }
 }

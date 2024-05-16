@@ -68,7 +68,7 @@ namespace Service.Validation
             return null;
         }
 
-        protected async Task<bool> RegisterValidation(UserDto registerParam, ResponseObject<List<Error>> response)
+        protected async Task<bool> RegisterValidation(UserDto registerParam, ResponseObject<List<Error>> response, bool isPatient = false)
         {
             bool isValid = true;
             response.Data = new List<Error>();
@@ -92,7 +92,7 @@ namespace Service.Validation
             }
             else
             {
-                if (!await IsUserExist(registerParam.UserName))
+                if (await IsUserExist(registerParam.UserName))
                 {
                     isValid = false;
                     Error error = new Error();
@@ -112,7 +112,7 @@ namespace Service.Validation
             }
             else
             {
-                if (!await IsEmailExist(registerParam.Email))
+                if (await IsEmailExist(registerParam.Email))
                 {
                     isValid = false;
                     Error error = new Error();
@@ -149,7 +149,7 @@ namespace Service.Validation
                 response.Data.Add(error);
             }
 
-            if (registerParam.DateofBirth == null || DateOnly.Parse(registerParam.DateofBirth) == default(DateOnly))
+            if ((registerParam.DateofBirth == null || DateOnly.Parse(registerParam.DateofBirth) == default(DateOnly)))
             {
                 isValid = false;
                 Error error = new Error();
@@ -158,7 +158,7 @@ namespace Service.Validation
                 response.Data.Add(error);
             }
 
-            if (registerParam.CountryId <= 0)
+            if (registerParam.CountryId <= 0 && !isPatient)
             {
                 isValid = false;
                 Error error = new Error();
@@ -167,7 +167,7 @@ namespace Service.Validation
                 response.Data.Add(error);
             }
 
-            if (registerParam.StateId <= 0)
+            if (registerParam.StateId <= 0 && !isPatient)
             {
                 isValid = false;
                 Error error = new Error();
@@ -176,7 +176,7 @@ namespace Service.Validation
                 response.Data.Add(error);
             }
 
-            if (registerParam.CityId <= 0)
+            if (registerParam.CityId <= 0 && !isPatient)
             {
                 isValid = false;
                 Error error = new Error();
@@ -252,7 +252,7 @@ namespace Service.Validation
                 response.Data.Add(error);
             }
 
-            if (registerParam.CountryId <= 0)
+            if (registerParam.CountryId <= 0 && registerParam.Role != Roles.Patient.ToString())
             {
                 isValid = false;
                 Error error = new Error();
@@ -261,7 +261,7 @@ namespace Service.Validation
                 response.Data.Add(error);
             }
 
-            if (registerParam.StateId <= 0)
+            if (registerParam.StateId <= 0 && registerParam.Role != Roles.Patient.ToString())
             {
                 isValid = false;
                 Error error = new Error();
@@ -270,7 +270,7 @@ namespace Service.Validation
                 response.Data.Add(error);
             }
 
-            if (registerParam.CityId <= 0)
+            if (registerParam.CityId <= 0 && registerParam.Role != Roles.Patient.ToString())
             {
                 isValid = false;
                 Error error = new Error();
@@ -374,15 +374,15 @@ namespace Service.Validation
         }
         private async Task<bool> IsUserExist(string userName)
         {
-            return await _dbContext.Users.AnyAsync(s => s.UserName == userName);
+            return await _userManager.Users.AnyAsync(s => s.UserName == userName);
         }
 
         private async Task<bool> IsEmailExist(string email, string userId = "")
         {
             if (userId == "")
-                return await _dbContext.Users.AnyAsync(s => s.Email == email);
+                return await _userManager.Users.AnyAsync(s => s.Email == email);
             else
-                return await _dbContext.Users.AnyAsync(s => s.Email == email && s.Id != userId);
+                return await _userManager.Users.AnyAsync(s => s.Email == email && s.Id != userId);
         }
 
         #endregion

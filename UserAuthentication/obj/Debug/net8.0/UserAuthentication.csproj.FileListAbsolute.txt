@@ -998,9 +998,9 @@ C:\Users\hshahid\Desktop\Work\HMS\Authentication\UserAuthentication\obj\Debug\ne
 C:\Users\hshahid\Desktop\Work\HMS\Authentication\UserAuthentication\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.UserAuthentication.props
 C:\Users\hshahid\Desktop\Work\HMS\Authentication\UserAuthentication\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\hshahid\Desktop\Work\HMS\Authentication\UserAuthentication\obj\Debug\net8.0\scopedcss\bundle\UserAuthentication.styles.css
-C:\Users\hshahid\Desktop\Work\HMS\Authentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.csproj.CopyComplete
 C:\Users\hshahid\Desktop\Work\HMS\Authentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.dll
 C:\Users\hshahid\Desktop\Work\HMS\Authentication\UserAuthentication\obj\Debug\net8.0\refint\UserAuthentication.dll
 C:\Users\hshahid\Desktop\Work\HMS\Authentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.pdb
 C:\Users\hshahid\Desktop\Work\HMS\Authentication\UserAuthentication\obj\Debug\net8.0\UserAuthentication.genruntimeconfig.cache
 C:\Users\hshahid\Desktop\Work\HMS\Authentication\UserAuthentication\obj\Debug\net8.0\ref\UserAuthentication.dll
+C:\Users\hshahid\Desktop\Work\HMS\Authentication\UserAuthentication\obj\Debug\net8.0\UserAuth.FD270E7B.Up2Date
