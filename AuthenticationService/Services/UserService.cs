@@ -41,7 +41,7 @@ namespace AuthenticationService
                 {
                     authClaims.Add(new Claim("Roles", userRole));
                 }
-                response.Data = GetToken(authClaims);
+                response.Data = GetData(authClaims,user, Roles);
             }
             return response;
         }
@@ -111,6 +111,7 @@ namespace AuthenticationService
         {
             var response = new ResponseObject<List<Error>>();
 
+            
             if (await RegisterValidation(userDto, response, true))
             {
                 var user = new Users()

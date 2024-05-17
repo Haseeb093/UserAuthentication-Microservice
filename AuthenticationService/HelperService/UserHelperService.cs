@@ -46,9 +46,9 @@ namespace Service.Validation
                     if (!login.Succeeded)
                     {
                         if (login.IsLockedOut)
-                            responseObject.Message = "User Locked Out !";
+                            responseObject.Message = "User Locked Out";
                         else
-                            responseObject.Message = "User Name or Password not Matched !";
+                            responseObject.Message = "User Name or Password not Matched";
                     }
                     else
                     {
@@ -58,12 +58,12 @@ namespace Service.Validation
                 }
                 else
                 {
-                    responseObject.Message = "User Name or Password not Matched !";
+                    responseObject.Message = "User Name or Password not Matched";
                 }
             }
             else
             {
-                responseObject.Message = "Please Provided User Name or Password !";
+                responseObject.Message = "Please Provided User Name or Password";
             }
             return null;
         }
@@ -78,7 +78,7 @@ namespace Service.Validation
                 isValid = false;
                 Error error = new Error();
                 error.Code = "FirstNameNotValid";
-                error.Message = "First or Last Name is Missing !";
+                error.Message = "First or Last Name is Missing";
                 response.Data.Add(error);
             }
 
@@ -87,7 +87,7 @@ namespace Service.Validation
                 isValid = false;
                 Error error = new Error();
                 error.Code = "UsernameNotValid";
-                error.Message = "Username is Missing !";
+                error.Message = "Username is Missing";
                 response.Data.Add(error);
             }
             else
@@ -97,7 +97,7 @@ namespace Service.Validation
                     isValid = false;
                     Error error = new Error();
                     error.Code = "UserExist";
-                    error.Message = "User Name Already Exist !";
+                    error.Message = "User Name Already Exist";
                     response.Data.Add(error);
                 }
             }
@@ -107,7 +107,7 @@ namespace Service.Validation
                 isValid = false;
                 Error error = new Error();
                 error.Code = "EmailNotValid";
-                error.Message = "Enter Valid Email Address !";
+                error.Message = "Enter Valid Email Address";
                 response.Data.Add(error);
             }
             else
@@ -117,7 +117,7 @@ namespace Service.Validation
                     isValid = false;
                     Error error = new Error();
                     error.Code = "EmailExist";
-                    error.Message = "User Email Already Exist !";
+                    error.Message = "User Email Already Exist";
                     response.Data.Add(error);
                 }
             }
@@ -127,7 +127,7 @@ namespace Service.Validation
                 isValid = false;
                 Error error = new Error();
                 error.Code = "PhoneNumberNotValid";
-                error.Message = "Phone Number is Missing !";
+                error.Message = "Phone Number is Missing";
                 response.Data.Add(error);
             }
 
@@ -145,7 +145,7 @@ namespace Service.Validation
                 isValid = false;
                 Error error = new Error();
                 error.Code = "DepartmentNotValid";
-                error.Message = "Please Select Department !";
+                error.Message = "Please Select Department";
                 response.Data.Add(error);
             }
 
@@ -201,7 +201,7 @@ namespace Service.Validation
                 isValid = false;
                 Error error = new Error();
                 error.Code = "FirstNameNotValid";
-                error.Message = "First or Last Name is Missing !";
+                error.Message = "First or Last Name is Missing";
                 response.Data.Add(error);
             }
 
@@ -210,7 +210,7 @@ namespace Service.Validation
                 isValid = false;
                 Error error = new Error();
                 error.Code = "EmailNotValid";
-                error.Message = "Enter Valid Email Address !";
+                error.Message = "Enter Valid Email Address";
                 response.Data.Add(error);
             }
             else
@@ -220,7 +220,7 @@ namespace Service.Validation
                     isValid = false;
                     Error error = new Error();
                     error.Code = "EmailAlreadyExists";
-                    error.Message = "User Email Already Exists !";
+                    error.Message = "User Email Already Exists";
                     response.Data.Add(error);
                 }
             }
@@ -230,7 +230,7 @@ namespace Service.Validation
                 isValid = false;
                 Error error = new Error();
                 error.Code = "PhoneNumberNotValid";
-                error.Message = "Phone Number is Missing !";
+                error.Message = "Phone Number is Missing";
                 response.Data.Add(error);
             }
 
@@ -328,13 +328,13 @@ namespace Service.Validation
                 var user = await GetUserById(Helper.DecryptString(lockOutUser.UserId));
 
                 if (user == null)
-                    responseObject.Message = "User not Found !";
+                    responseObject.Message = "User not Found";
                 else
                     return user;
             }
             else
             {
-                responseObject.Message = "Please Provided User Id !";
+                responseObject.Message = "Please Provided User Id";
             }
             return null;
         }
@@ -349,7 +349,7 @@ namespace Service.Validation
             return await _userManager.FindByNameAsync(userName) as Users;
         }
 
-        protected TokenDto GetToken(List<Claim> authClaims)
+        protected TokenDto GetData(List<Claim> authClaims, Users user, IList<string> roles)
         {
             var token = new JwtSecurityToken(
                 issuer: _configuration["JWT:ValidIssuer"],
@@ -361,7 +361,10 @@ namespace Service.Validation
             return new TokenDto()
             {
                 ValidTo = token.ValidTo,
-                Role = authClaims.Find(s => s.Type == "Roles").Value,
+                Roles = roles,
+                UserName = user.UserName,
+                FullName = user.FirstName + " " + user.LastName,
+                Email = user.Email,
                 Token = new JwtSecurityTokenHandler().WriteToken(token)
             };
         }
