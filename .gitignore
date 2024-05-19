@@ -19,3 +19,47 @@
 
 /ApiGateWay/obj/Debug/net8.0/ApiGateWay.sourcelink.json
 /AuthenticationService/bin/Debug/net8.0/Domain.dll
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Visual Studio
+.vscode/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vscode/
+
+# Auto-generated files (e.g., by NuGet)
+*.nupkg
+*.snupkg
+*.nuspec
+*.dll
+*.exe
+*.dll.config
+*.exe.config
+*.pdb
+*.mdb
+*.cache
+*.ilk
+*.log
+*.wrn
+*.err
+*.sbr
+*.userprefs
+*.chm
+*.bak
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Build Folders
+bin/
+obj/
+TestResults/

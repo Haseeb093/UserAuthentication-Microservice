@@ -3,11 +3,11 @@ using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddJsonFile("GateWay/UserAuthentication.json");
-
 // Add services to the container.
 
 builder.Services.AddJwtAuthentication();
+
+builder.Configuration.AddJsonFile("GateWay/UserAuthentication.json");
 
 builder.Services.AddEndpointsApiExplorer();
 
