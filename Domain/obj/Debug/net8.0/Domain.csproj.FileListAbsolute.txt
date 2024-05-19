@@ -101,3 +101,16 @@ C:\Users\hshahid\Desktop\Work\HMS\Authentication\Domain\obj\Debug\net8.0\Domain.
 C:\Users\hshahid\Desktop\Work\HMS\Authentication\Domain\obj\Debug\net8.0\refint\Domain.dll
 C:\Users\hshahid\Desktop\Work\HMS\Authentication\Domain\obj\Debug\net8.0\Domain.pdb
 C:\Users\hshahid\Desktop\Work\HMS\Authentication\Domain\obj\Debug\net8.0\ref\Domain.dll
+E:\Work\Projects\HMS\Micoroservices\UserAuthentication-Microservice\Domain\bin\Debug\net8.0\Domain.deps.json
+E:\Work\Projects\HMS\Micoroservices\UserAuthentication-Microservice\Domain\bin\Debug\net8.0\Domain.dll
+E:\Work\Projects\HMS\Micoroservices\UserAuthentication-Microservice\Domain\bin\Debug\net8.0\Domain.pdb
+E:\Work\Projects\HMS\Micoroservices\UserAuthentication-Microservice\Domain\obj\Debug\net8.0\Domain.csproj.AssemblyReference.cache
+E:\Work\Projects\HMS\Micoroservices\UserAuthentication-Microservice\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\Work\Projects\HMS\Micoroservices\UserAuthentication-Microservice\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+E:\Work\Projects\HMS\Micoroservices\UserAuthentication-Microservice\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+E:\Work\Projects\HMS\Micoroservices\UserAuthentication-Microservice\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+E:\Work\Projects\HMS\Micoroservices\UserAuthentication-Microservice\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+E:\Work\Projects\HMS\Micoroservices\UserAuthentication-Microservice\Domain\obj\Debug\net8.0\Domain.dll
+E:\Work\Projects\HMS\Micoroservices\UserAuthentication-Microservice\Domain\obj\Debug\net8.0\refint\Domain.dll
+E:\Work\Projects\HMS\Micoroservices\UserAuthentication-Microservice\Domain\obj\Debug\net8.0\Domain.pdb
+E:\Work\Projects\HMS\Micoroservices\UserAuthentication-Microservice\Domain\obj\Debug\net8.0\ref\Domain.dll

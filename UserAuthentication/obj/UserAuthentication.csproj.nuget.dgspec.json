@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\UserAuthentication\\UserAuthentication.csproj": {}
+    "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\UserAuthentication\\UserAuthentication.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\AuthenticationService\\Service.csproj": {
+    "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\AuthenticationService\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\AuthenticationService\\Service.csproj",
+        "projectUniqueName": "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\AuthenticationService\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\AuthenticationService\\Service.csproj",
-        "packagesPath": "C:\\Users\\hshahid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\AuthenticationService\\obj\\",
+        "projectPath": "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\AuthenticationService\\Service.csproj",
+        "packagesPath": "C:\\Users\\Haseeb\\.nuget\\packages\\",
+        "outputPath": "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\AuthenticationService\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hshahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Haseeb\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\Domain.csproj"
+              "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\Domain\\Domain.csproj"
               }
             }
           }
@@ -55,27 +55,27 @@
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.5, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.5, )"
             }
           },
           "imports": [
@@ -98,17 +98,17 @@
         }
       }
     },
-    "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\Domain.csproj": {
+    "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\Domain.csproj",
+        "projectUniqueName": "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\hshahid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\obj\\",
+        "projectPath": "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\Haseeb\\.nuget\\packages\\",
+        "outputPath": "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hshahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Haseeb\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -141,7 +141,7 @@
           "dependencies": {
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.5, )"
             },
             "Serilog.AspNetCore": {
               "target": "Package",
@@ -168,17 +168,17 @@
         }
       }
     },
-    "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\UserAuthentication\\UserAuthentication.csproj": {
+    "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\UserAuthentication\\UserAuthentication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\UserAuthentication\\UserAuthentication.csproj",
+        "projectUniqueName": "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\UserAuthentication\\UserAuthentication.csproj",
         "projectName": "UserAuthentication",
-        "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\UserAuthentication\\UserAuthentication.csproj",
-        "packagesPath": "C:\\Users\\hshahid\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\UserAuthentication\\obj\\",
+        "projectPath": "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\UserAuthentication\\UserAuthentication.csproj",
+        "packagesPath": "C:\\Users\\Haseeb\\.nuget\\packages\\",
+        "outputPath": "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\UserAuthentication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\hshahid\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Haseeb\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -192,11 +192,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\AuthenticationService\\Service.csproj": {
-                "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\AuthenticationService\\Service.csproj"
+              "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\AuthenticationService\\Service.csproj": {
+                "projectPath": "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\AuthenticationService\\Service.csproj"
               },
-              "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\hshahid\\Desktop\\Work\\HMS\\Authentication\\Domain\\Domain.csproj"
+              "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\Domain\\Domain.csproj": {
+                "projectPath": "E:\\Work\\Projects\\HMS\\Micoroservices\\UserAuthentication-Microservice\\Domain\\Domain.csproj"
               }
             }
           }
@@ -218,17 +218,17 @@
           "dependencies": {
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.5, )"
             },
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.5, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[8.0.5, )"
             },
             "Serilog.AspNetCore": {
               "target": "Package",
